@@ -1,7 +1,7 @@
 variables:
-    TUTOR_PLUGIN: EMI
+    TUTOR_PLUGIN: emi
     TUTOR_EXTRA_ENABLED_PLUGINS: mfe
-    TUTOR_PYPI_PACKAGE: EMI
+    TUTOR_PYPI_PACKAGE: emi
     TUTOR_IMAGES: openedx mfe
     GITHUB_REPO: mexicox/tutor-indigo
 
@@ -12,11 +12,11 @@ deploy_prod:
   stage: deploy
   script:
     - source /opt/mexicox/venv/bin/activate
-    - rm -rf  "$(tutor config printroot)/env/build/openedx/themes/EMI/*"
-    - cp -rf * "$(tutor config printroot)/env/build/openedx/themes/EMI"
+    - rm -rf  "$(tutor config printroot)/env/build/openedx/themes/emi/*"
+    - cp -rf * "$(tutor config printroot)/env/build/openedx/themes/emi"
     - cd "$(tutor config printroot)/env/build/openedx/themes"
-    - pip install -e ./EMI
-    - tutor plugins enable EMI
+    - pip install -e ./emi
+    - tutor plugins enable emi
   tags:
     - edx
   only:
@@ -27,13 +27,13 @@ deploy_dev:
   stage: deploy
   script:
     - source /opt/mexicox/venv/bin/activate
-    - rm -rf  "$(tutor config printroot)/env/build/openedx/themes/EMI/*"
-    - cp -rf * "$(tutor config printroot)/env/build/openedx/themes/EMI"
+    - rm -rf  "$(tutor config printroot)/env/build/openedx/themes/emi/*"
+    - cp -rf * "$(tutor config printroot)/env/build/openedx/themes/emi"
     - cd "$(tutor config printroot)/env/build/openedx/themes"
-    - pip install -e ./EMI
-    - tutor plugins enable EMI
+    - pip install -e ./emi
+    - tutor plugins enable emi
     - tutor config save
-    - tutor local do settheme EMI
+    - tutor local do settheme emi
     - tutor images build --build-arg EDX_PLATFORM_REPOSITORY=https://github.com/XxjhonWalkerxX/edx-platform.git --build-arg EDX_PLATFORM_VERSION=diegod  openedx
     - tutor local stop 
     - tutor local start -d
