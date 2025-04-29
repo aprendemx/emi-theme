@@ -1,0 +1,29 @@
+<%page expression_filter="h"/>
+
+<%namespace name='static' file='../static_content.html'/>
+<%namespace file='../main.html' import="login_query"/>
+<%!
+from django.urls import reverse
+from django.utils.translation import gettext as _
+%>
+
+<!-- Navbar para usuarios no autenticados -->
+<ul class="navbar-nav my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+  <li class="nav-item">
+    <a class="nav-link" href="/emi/courses">${_("Courses")}</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">${_("Resources")}</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/emi/online">${_("Online")}</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/emi/myclassroom">${_("My Classroom")}</a>
+  </li>
+  <li class="nav-item">
+    <div class="circulo">
+      <a class="nav-link text-light" href="/login${login_query()}">${_("Login")}</a>
+    </div>
+  </li>
+</ul>

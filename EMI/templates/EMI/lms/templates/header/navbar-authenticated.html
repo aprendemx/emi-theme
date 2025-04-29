@@ -1,0 +1,26 @@
+<%page expression_filter="h" args="online_help_token"/>
+
+<%namespace name='static' file='../static_content.html'/>
+<%namespace file='../main.html' import="login_query"/>
+<%!
+from django.urls import reverse
+from django.utils.translation import gettext as _
+%>
+
+<!-- Navbar para usuarios autenticados -->
+<ul class="navbar-nav my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+  <li class="nav-item">
+    <a class="nav-link" href="${reverse('dashboard')}">${_("My Courses")}</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/emi/myclassroom">${_("My Classroom")}</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/emi/online">${_("Online")}</a>
+  </li>
+  <li class="nav-item">
+    <div class="circulo">
+      <a class="nav-link text-light" href="${reverse('logout')}">${_("Logout")}</a>
+    </div>
+  </li>
+</ul>

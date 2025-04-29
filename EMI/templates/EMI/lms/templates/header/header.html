@@ -1,0 +1,69 @@
+<%page expression_filter="h" args="online_help_token, use_cookie_banner=False"/>
+
+<%namespace name='static' file='../static_content.html'/>
+<%namespace file='../main.html' import="login_query"/>
+<%!
+from django.urls import reverse
+from django.utils.translation import gettext as _
+%>
+
+<header class="global-header">
+  <nav class="navbar navbar-expand-lg fondo_guinda">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+        <img src="${static.url('images/logo_emi.png')}" alt="EMI Logo">
+      </a>
+
+      <!-- Botón hamburguesa -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Contenido del menú -->
+      <div class="collapse navbar-collapse justify-content-center" id="navbarScroll">
+        <ul class="navbar-nav my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              ${_("Courses")}
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+              <li><a class="dropdown-item" href="/courses">${_("Course 1")}</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">${_("Course 2")}</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">${_("Resources")}</a>
+          </li>
+          <li class="nav-item">
+            <form class="d-flex">
+              <input class="form-control me-2 fondo_guinda_claro" type="search" placeholder="${_('Search')}" aria-label="Search">
+            </form>
+          </li>
+          <li class="nav-item">
+            <div class="circulo_rojo">
+              <div></div>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/emi/online">${_("Online")}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/emi/myclassroom">${_("My Classroom")}</a>
+          </li>
+          <li class="nav-item">
+            % if user.is_authenticated:
+              <div class="circulo">
+                <a class="nav-link" href="${reverse('logout')}">${_("Logout")}</a>
+              </div>
+            % else:
+              <div class="circulo">
+                <a class="nav-link" href="${reverse('login')}">${_("Login")}</a>
+              </div>
+            % endif
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
