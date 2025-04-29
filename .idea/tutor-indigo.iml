@@ -11,7 +11,7 @@
     <option name="TEMPLATE_CONFIGURATION" value="Chameleon" />
     <option name="TEMPLATE_FOLDERS">
       <list>
-        <option value="$MODULE_DIR$/mexicoxmx/templates" />
+        <option value="$MODULE_DIR$/EMI/templates" />
       </list>
     </option>
   </component>
