@@ -47,7 +47,7 @@ hooks.Filters.ENV_TEMPLATE_ROOTS.add_item(
 hooks.Filters.ENV_TEMPLATE_TARGETS.add_items(
     [
         ("emi", "build/openedx/themes"),
-        ("emi/env.config.jsx", "plugins/mfe/build/mfe"),
+        #("emi/env.config.jsx", "plugins/mfe/build/mfe"),
     ],
 )
 
