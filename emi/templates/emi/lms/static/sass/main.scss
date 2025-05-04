@@ -1,18 +1,21 @@
 
-
-
 @import "node_modules/bootstrap/scss/functions";
 @import "node_modules/bootstrap/scss/variables";
 @import "node_modules/bootstrap/scss/mixins/breakpoints";
 
 
 @import "partials/lms/theme/variables";
-
-
 @import "partials/lms/theme/fonts";
 
-
 @import "extra/header";
-
+@import "extra/footer";
 
 @import "home/home";
+
+@import "certificates/certificate";
+@import "courseware/discover";
+@import "courseware/about";
+@import "dashboard/dashboard";
+@import "programs/programs";
+@import "xblock/xblock";
+

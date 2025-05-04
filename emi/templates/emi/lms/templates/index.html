@@ -3,65 +3,59 @@
 <%namespace name="static" file="/static_content.html"/>
 
 <%block name="head_top">
-  <!-- Bootstrap Icons (Bootstrap CSS ya lo carga Indigo) -->
+  <!-- íconos Bootstrap (ya carga CSS en main.html) -->
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
 </%block>
 
 <%block name="body">
   <body class="montserrat">
-    <%include file="../header/header.html"/>
+    <%include file="header/header.html"/>
 
     <div class="container-fluid">
-      <!-- Imagen principal -->
+      <!-- Banner principal -->
       <div class="row mb-5">
-        <div class="col-md-12">
+        <div class="col-12">
           <img src="${static.url('img/imagen_prin.png')}"
                alt="Banner" class="img_principal"/>
         </div>
       </div>
 
-      <!-- Título Recommended Courses -->
+      <!-- Recommended Courses -->
       <div class="row mb-3">
         <div class="col-md-3 text-center ms-3">
           <h4 class="color_guinda titulos">Recommended Courses</h4>
         </div>
       </div>
-
-      <!-- Tarjetas de cursos -->
       <div class="row row-cols-1 row-cols-md-4 g-4 mb-5">
+        <!-- Repite estas tarjetas cambiando cursoN.png -->
         <div class="col">
           <div class="card h-100 fondo_card">
-            <img src="${static.url('img/curso1.png')}" class="card-img-top"/>
+            <img src="${static.url('img/curso1.png')}"
+                 class="card-img-top"/>
             <div class="card-body">
-              <h4 class="card-title color_guinda fw-bold">Recommended Course Title</h4>
-              <h6 class="card-title color_guinda">Description</h6>
-              <p class="card-text color_guinda">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit...
-              </p>
-              <p class="text-center color_guinda">
-                 <span><i class="bi bi-person"></i> 895</span>
-              </p>
-              <div class="card-footer text-body-secondary">
-                <a href="#" class="btn btn_join fondo_amarillo text-white">Join now</a>
-              </div>
+              <h4 class="card-title color_guinda fw-bold">Título del curso</h4>
+              <p class="card-text color_guinda">Lorem ipsum dolor sit amet…</p>
+            </div>
+            <div class="card-footer text-center">
+              <a href="#" class="btn btn_join fondo_amarillo text-white">
+                Join now
+              </a>
             </div>
           </div>
         </div>
-        <!-- Repetir para curso2, curso3, curso4 cambiando img/cursoN.png -->
+        <!-- … -->
       </div>
 
-      <!-- Carrusel de videos -->
+      <!-- Carrusel de vídeos -->
       <div class="row">
-        <div class="col-md-12 fondo_verde_oscuro mt-5">
-          <!-- Contenido del carrusel (igual que tu HTML original) -->
+        <div class="col-12 fondo_verde_oscuro mt-5">
+          <%include file="../static_templates/online.html"/>
         </div>
       </div>
-
-      <!-- Resto de secciones... -->
+      <!-- … resto de secciones … -->
 
     </div>
-
-    <%include file="../static_templates/footer.html"/>
+    <%include file="footer/footer.html"/>
   </body>
 </%block>
