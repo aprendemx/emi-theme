@@ -9,6 +9,8 @@ $f-sans-serif: Crimson, 'Open Sans','Helvetica Neue', Helvetica, Arial, sans-ser
 // Initialize the Open edX Bootstrap theme
 @import 'edx-bootstrap/sass/open-edx/theme';
 
+// Ruta base para recursos estáticos (se usa en imports de Bootstrap, fonts, etc.)
+$static-path: "" !default;
 
 // Introducing new variables
 
