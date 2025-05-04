@@ -134,3 +134,59 @@ section.home {
         }
     }
 }
+
+// Estilos de la página de inicio (home)
+.img_principal {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.fondo_card {
+  background-color: #dfd6c5;
+}
+
+.card {
+  margin: 8% 8% 0 8%;
+  box-shadow: 1px 0 7px 1px rgba(0,0,0,0.71);
+}
+
+.card-body {
+  padding: 2rem 2rem 0 2rem;
+}
+
+.card-text {
+  font-size: 0.8rem;
+}
+
+.btn_join {
+  width: 100%;
+  border-radius: 11px;
+  border: none !important;
+}
+
+// Carrusel
+.carousel-item {
+  width: calc(100% / 4);
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+  width: 4%;
+  opacity: 1;
+}
+
+.carousel-inner {
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+// Barras de progreso
+.progress {
+  background-color: #45d8b4;
+  border-radius: 3.25rem;
+}
+
+.progress-bar {
+  background-color: #1A2820;
+}

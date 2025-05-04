@@ -1,189 +1,32 @@
-## mako
 <%page expression_filter="h"/>
-<%!
-  from datetime import datetime
-  from django.urls import reverse
-  from django.utils.translation import gettext as _
-  from lms.djangoapps.branding.api import get_footer
-  from openedx.core.djangoapps.lang_pref.api import footer_language_selector_is_enabled
-%>
-<% footer = get_footer(is_secure=is_secure) %>
-<% icp_license_info = getattr(settings, 'ICP_LICENSE_INFO', {})%>
-<%namespace name='static' file='static_content.html'/>
-<!-- NEW IN INDIGO update footer -->
-% if uses_bootstrap:
-<div class="wrapper wrapper-footer">
-  <footer id="footer" class="tutor-container"
-    ## When rendering the footer through the branding API,
-    ## the direction may not be set on the parent element,
-    ## so we set it here.
-    % if bidi:
-      dir=${bidi}
-    % endif
-  >
-  <div class="footer-top">
-    <div class="powered-area">
-      ## Please leave this link and use one of the logos provided
-      ## The OpenEdX link may be hidden when this view is served
-      ## through an API to partner sites (such as marketing sites or blogs),
-      ## which are not technically powered by OpenEdX.
-      % if not hide_openedx_link:
-      <ul class="logo-list">
+<%namespace name="static" file="/static_content.html"/>
 
-      </ul>
-    </div>
-    {% if INDIGO_FOOTER_NAV_LINKS %}
-    <nav class="nav-colophon" aria-label="${_('About')}">
-      <ol>
-          {% for link in INDIGO_FOOTER_NAV_LINKS %}
-          <li>
-            <a href="{{ link['url'] }}">{{ link['title'] }}</a>
-          </li>
-          {% endfor %}
-      </ol>
-    </nav>
-    {% endif %}
-<div class="powered-area">
-            <img src="https://sisadmin.mexicox.gob.mx/extramexicox/eduaprende.jpg" alt="Runs on Tutor" height="70px"/>
+<footer class="main-footer fondo_guinda text-light">
+  <div class="list-info">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3 mt-5">
+          <img src="https://framework-gb.cdn.gob.mx/gobmx/img/logo_blanco.svg"
+               alt="Gobierno de México" class="logo_footer" style="max-width:90%;"/>
         </div>
-  </div>
-  <span class="copyright-site">©${datetime.now().year}. Todos los derechos reservados.</span>
-  % endif
-    <div class="colophon">
-
-      % if context.get('include_language_selector', footer_language_selector_is_enabled()):
-          <%include file="${static.get_template_path('widgets/footer-language-selector.html')}"/>
-      % endif
-
-      ## Site operators: Please do not remove this paragraph! This attributes back to edX and makes your acknowledgement of edX's trademarks clear.
-        <p class="copyright">${footer['copyright']}
-            % if icp_license_info.get('icp_license'):
-              ${u" | {text}".format(text=icp_license_info.get('text'))}
-              <a href="${icp_license_info.get('icp_license_link', '#')}">
-                  ${u" {icp}".format(icp=icp_license_info.get('icp_license'))}
-              </a>
-            % endif
-        </p>
-    </div>
-    <div class="references">
-          <!--span>Built on <a href="http://open.edx.org">OpenEdX</a>.</span-->
-          <ol>
-                 <li style="display:inline;">
-            <a href="//www.facebook.com/mexicoXgob/" target="_blank">
-                <img alt="logo fb" src="https://sisadmin.mexicox.gob.mx/redessociales/facebook1.png" height="40px" style=" margin-left:15px;"></a></li>
-        <li style="display:inline;">
-                  <a href="//twitter.com/MexicoX_gob?lang=es" target="_blank">
-                    <img alt="logotipo tw" src="https://sisadmin.mexicox.gob.mx/redessociales/twitter1.png" style="margin-left:6px;" height="40px">
-                  </a>
-                </li>
-
-              </ol>
-        </div>
-  </footer>
-</div>
-% else:
-<!-- NEW IN INDIGO update footer -->
-  <div class="wrapper wrapper-footer">
-    <footer id="footer" class="tutor-container"
-      ## When rendering the footer through the branding API,
-      ## the direction may not be set on the parent element,
-      ## so we set it here.
-      % if bidi:
-        dir=${bidi}
-      % endif
-    >
-    <div class="footer-top">
-      <div class="powered-area">
-        ## Please leave this link and use one of the logos provided
-        ## The OpenEdX link may be hidden when this view is served
-        ## through an API to partner sites (such as marketing sites or blogs),
-        ## which are not technically powered by OpenEdX.
-        % if not hide_openedx_link:
-            <ul class="logo-list">
-
-            </ul>
-          </div>
-          {% if INDIGO_FOOTER_NAV_LINKS %}
-          <nav class="nav-colophon" aria-label="${_('About')}">
-            <ol>
-                {% for link in INDIGO_FOOTER_NAV_LINKS %}
-                <li>
-                  <a href="{{ link['url'] }}">{{ link['title'] }}</a>
-                </li>
-                {% endfor %}
-            </ol>
-          </nav>
-          {% endif %}
-        <div class="powered-area" style="text-align: center; padding-left: 30px;padding-top: 8px;">
-          <img src="https://sisadmin.mexicox.gob.mx/extramexicox/eduaprende.jpg" alt="Runs on Tutor" height="70px"/>
-        </div>
-
-        </div>
-        <div style="text-align: center; padding-left: 54px;">
-          <span class="copyright-site">©${datetime.now().year}. Todos los derechos reservados.</span>
-        </div>
-    % endif
-      <div class="colophon">
-
-        % if context.get('include_language_selector', footer_language_selector_is_enabled()):
-            <%include file="${static.get_template_path('widgets/footer-language-selector.html')}"/>
-        % endif
-
-        ## Site operators: Please do not remove this paragraph! This attributes back to edX and makes your acknowledgement of edX's trademarks clear.
-          <p class="copyright">${footer['copyright']}
-              % if icp_license_info.get('icp_license'):
-                ${u" | {text}".format(text=icp_license_info.get('text'))}
-                <a href="${icp_license_info.get('icp_license_link', '#')}">
-                    ${u" {icp}".format(icp=icp_license_info.get('icp_license'))}
-                </a>
-              % endif
-          </p>
-      </div>
-<div class="references" style="text-align: center;">
-      <!--span>Built on <a href="http://open.edx.org">OpenEdX</a>.</span-->
-      <ol>
-        	 <li style="display:inline;">
-        <a href="//www.facebook.com/mexicoXgob/" target="_blank">
-            <img alt="logo fb" src="${static.url("images/logoface.png")}" height="40px" style=" margin-left:0.5px; margin-top: 26px"></a></li>
-	<li style="display:inline;">
-              <a href="//twitter.com/MexicoX_gob?lang=es" target="_blank">
-                <img alt="logotipo tw" src="${static.url("images/logox.png")}" style="margin-left:10.5px; margin-top: 26px;" height="40px">
-              </a>
+        <div class="col-sm-3 mt-5">
+          <h5>Enlaces</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link p-0 text-light"
+                 href="https://participa.gob.mx"
+                 target="_blank">Participa</a>
             </li>
-
-          </ol>
+            <!-- Añade aquí el resto de enlaces -->
+          </ul>
+        </div>
+        <!-- Otras columnas de footer -->
+      </div>
     </div>
-    </footer>
-      <!-- Google tag (gtag.js) -->
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z97Y3FJQ9H"></script>
-      <script>
-          window.dataLayer = window.dataLayer || [];
-
-          function gtag() {
-              dataLayer.push(arguments);
-          }
-
-          gtag('js', new Date());
-
-          gtag('config', 'G-Z97Y3FJQ9H');
-      </script>
-
   </div>
-% endif
-% if include_dependencies:
-  <%static:js group='base_vendor'/>
-  <%static:css group='style-vendor'/>
-  <%include file="widgets/segment-io.html" />
-  <%include file="widgets/segment-io-footer.html" />
-% endif
-% if footer_css_urls:
-  % for url in footer_css_urls:
-    <link rel="stylesheet" type="text/css" href="${url}"></link>
-  % endfor
-% endif
-<script>
-	let $= jQuery;
-</script>
-<script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>
-<link href="https://framework-gb.cdn.gob.mx/assets/styles/main.css" rel="stylesheet">
-
+  <div class="row mt-5">
+    <div class="col-12">
+      <img src="https://framework-gb.cdn.gob.mx/gobmx/img/pleca.svg" class="img-fluid" alt="Pleca"/>
+    </div>
+  </div>
+</footer>

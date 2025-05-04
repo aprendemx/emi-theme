@@ -1,55 +1,43 @@
 <%page expression_filter="h"/>
-<%namespace name='static' file='/static_content.html'/>
+<%namespace name="static" file="/static_content.html"/>
 
-<nav class="navbar-nav my-2 my-lg-0 navbar-nav-scroll" aria-label="Supplemental Links">
-  <ul>
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle"
-         href="#"
-         id="navbarScrollingDropdown"
-         role="button"
-         data-bs-toggle="dropdown"
-         aria-expanded="false">
-        Courses
-      </a>
-      <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-        <li><a class="dropdown-item" href="${static.url('courses.html')}">Course 1</a></li>
-        <li><hr class="dropdown-divider"/></li>
-        <li><a class="dropdown-item" href="#">Course 2</a></li>
-      </ul>
-    </li>
-
-    <li class="nav-item">
-      <a class="nav-link active" aria-current="page" href="#">Resourses</a>
-    </li>
-
-    <li class="nav-item">
-      <form class="d-flex">
-        <input class="form-control me-2 fondo_guinda_claro"
-               type="search"
-               placeholder=""
-               aria-label="Search"/>
-      </form>
-    </li>
-
-    <li class="nav-item">
-      <div class="circulo_rojo"><div></div></div>
-    </li>
-
-    <li class="nav-item">
-      <a class="nav-link cir" href="${static.url('online.html')}">On Line</a>
-    </li>
-
-    <li class="nav-item">
-      <a class="nav-link color_guinda_claro" href="${static.url('myclassroom.html')}">
-        My classroom
-      </a>
-    </li>
-
-    <li class="nav-item">
-      <div class="circulo">
-        <a class="nav-link color_guinda" href="${static.url('login.html')}">Login</a>
-      </div>
-    </li>
-  </ul>
-</nav>
+<ul class="navbar-nav my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle"
+       href="#"
+       id="navbarScrollingDropdown"
+       role="button"
+       data-bs-toggle="dropdown"
+       aria-expanded="false">
+      Courses
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+      <li><a class="dropdown-item" href="${static.url('courses.html')}">Course 1</a></li>
+      <li><hr class="dropdown-divider"/></li>
+      <li><a class="dropdown-item" href="#">Course 2</a></li>
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="#">Resourses</a>
+  </li>
+  <li class="nav-item">
+    <form class="d-flex">
+      <input class="form-control me-2 fondo_guinda_claro"
+             type="search" placeholder="" aria-label="Search"/>
+    </form>
+  </li>
+  <li class="nav-item">
+    <div class="circulo_rojo"><div></div></div>
+  </li>
+  <li class="nav-item">
+    <a class="nav-lin cir" href="${static.url('online.html')}">On Line</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link color_guinda_claro" href="${static.url('myclassroom.html')}">My classroom</a>
+  </li>
+  <li class="nav-item">
+    <div class="circulo">
+      <a class="nav-link color_guinda" href="${static.url('login.html')}">Login</a>
+    </div>
+  </li>
+</ul>

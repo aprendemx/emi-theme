@@ -1,22 +1,25 @@
-<%page expression_filter="h" args="online_help_token, use_cookie_banner=False"/>
-<%namespace name='static' file='/static_content.html'/>
+<%page expression_filter="h"/>
+<%namespace name="static" file="/static_content.html"/>
 
-<header class="global-header fondo_guinda">
-  <div class="container-fluid cabeza">
-    <%include file="brand.html"/>
+<div class="row fondo_guinda">
+  <div class="col-12">
+    <nav class="navbar navbar-expand-lg fondo_guinda">
+      <div class="container-fluid">
+        <%include file="brand.html"/>
 
-    <button class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarScroll"
-            aria-controls="navbarScroll"
-            aria-expanded="false"
-            aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarScroll"
+                aria-controls="navbarScroll"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <div class="collapse navbar-collapse justify-content-center" id="navbarScroll">
-      <%include file="navbar-not-authenticated.html"/>
-    </div>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarScroll">
+          <%include file="navbar-not-authenticated.html"/>
+        </div>
+      </div>
+    </nav>
   </div>
-</header>
+</div>
