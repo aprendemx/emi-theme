@@ -1,4 +1,3 @@
-
 $static-path: "../fonts";
 
 $primary: #82c5be;
@@ -9,19 +8,23 @@ $font-family-title: 'Inter', sans-serif;;
 $serif: Crimson;
 $f-sans-serif: Crimson, 'Open Sans','Helvetica Neue', Helvetica, Arial, sans-serif;
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
 // Initialize the Open edX Bootstrap theme
 @import 'edx-bootstrap/sass/open-edx/theme';
 
+// Nuevas variables necesarias
+$content_padding_top: 24px;
+$content-padding-bottom: 10px;
+$header-height: 75px;
+$footer-height: 125.5px;
 
 // Introducing new variables
-
 $dark: #111827;
 $light-dark: #374151;
 $big-screen: 1200px;
 
-
-$text-color-d: #212529;
-$body-bg-d: #ffffff;
+$text-color-d: #e5e7eb;
+$body-bg-d: #1f2937;
 
 $primary-d: $primary;
 $secondary-d: #6c757d;
@@ -31,4 +34,5 @@ $warning-d: #ffc107;
 $danger-d: #dc3545;
 $light-d: #f8f9fa;
 $dark-d: #212529;
-$primary-light-d: #374151;   // Un azul oscuro para elementos claros
+$primary-light-d: #374151;
+$btn-color-d: #e5e7eb;  // Color claro para botones modo oscuro
