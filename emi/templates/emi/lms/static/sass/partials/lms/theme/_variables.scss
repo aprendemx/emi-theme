@@ -1,10 +1,11 @@
+
 $static-path: "../fonts";
 
 $primary: #82c5be;
 $primary-light: #F2F7F8;
 
 // Theme fonts
-$font-family-title: 'Inter', sans-serif;;
+$font-family-title: 'Inter', sans-serif;
 $serif: Crimson;
 $f-sans-serif: Crimson, 'Open Sans','Helvetica Neue', Helvetica, Arial, sans-serif;
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
@@ -12,20 +13,14 @@ $f-sans-serif: Crimson, 'Open Sans','Helvetica Neue', Helvetica, Arial, sans-ser
 // Initialize the Open edX Bootstrap theme
 @import 'edx-bootstrap/sass/open-edx/theme';
 
-// Nuevas variables necesarias
-$content_padding_top: 24px;
-$content-padding-bottom: 10px;
-$header-height: 75px;
-$footer-height: 125.5px;
-
 // Introducing new variables
 $dark: #111827;
 $light-dark: #374151;
 $big-screen: 1200px;
 
-$text-color-d: #e5e7eb;
-$body-bg-d: #1f2937;
-
+// Colores para modo claro
+$text-color-d: #e5e7eb; // Color claro para texto
+$body-bg-d: #1f2937;    // Gris oscuro para fondo de página
 $primary-d: $primary;
 $secondary-d: #6c757d;
 $success-d: #198754;
@@ -34,11 +29,22 @@ $warning-d: #ffc107;
 $danger-d: #dc3545;
 $light-d: #f8f9fa;
 $dark-d: #212529;
-$primary-light-d: #374151;
-$btn-color-d: #e5e7eb;  // Color claro para botones modo oscuro
-$text-color-primary: #212529;
+$primary-light-d: #374151; // Azul oscuro para elementos claros
+
+// Variables adicionales usadas en _xblock.scss y _extras.scss
+$text-color-primary: #e5e7eb;
 $btn-border-color-d: #374151;
 $link-color-d: #60a5fa;
 $background-color-d: $body-bg-d;
 $border-color-d: #374151;
 $card-bg-d: $body-bg-d;
+$light-overlay-d: rgba(255, 255, 255, 0.05);
+$btn-color-d: #f8f9fa;
+$btn-bg-d: $primary-d;
+$btn-border-color-d: $primary-d;
+$btn-hover-color-d: #f8f9fa;
+$btn-hover-bg-d: darken($primary-d, 10%);
+$btn-hover-border-color-d: darken($primary-d, 10%);
+
+// Variable para overlays (si se usa en extras o xblock)
+$overlay-color-d: rgba(0, 0, 0, 0.5);
