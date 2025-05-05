@@ -1,7 +1,9 @@
 ## mako
 
 <%page expression_filter="h" args="online_help_token, use_cookie_banner=False"/>
-
+<%!
+from django.utils.translation import gettext as _
+%>
 <%namespace name='static' file='../static_content.html'/>
 <%namespace file='../main.html' import="login_query"/>
 
