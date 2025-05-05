@@ -1,61 +1,17 @@
 <%page expression_filter="h"/>
-<%inherit file="main.html"/>
-<%namespace name="static" file="/static_content.html"/>
+<%inherit file="/main.html"/>
 
-<%block name="head_top">
-  <!-- íconos Bootstrap (ya carga CSS en main.html) -->
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
+<%block name="headextra">
+    <link rel="stylesheet" href="${static.url('css/lms-main.css')}">
 </%block>
 
-<%block name="body">
-  <body class="montserrat">
-    <%include file="header/header.html"/>
+<%block name="navbar">
+    <%include file="header/navbar-authenticated.html"/>
+</%block>
 
-    <div class="container-fluid">
-      <!-- Banner principal -->
-      <div class="row mb-5">
-        <div class="col-12">
-          <img src="${static.url('img/imagen_prin.png')}"
-               alt="Banner" class="img_principal"/>
-        </div>
-      </div>
+<h1>Bienvenido a EMI</h1>
+<p>Plataforma educativa</p>
 
-      <!-- Recommended Courses -->
-      <div class="row mb-3">
-        <div class="col-md-3 text-center ms-3">
-          <h4 class="color_guinda titulos">Recommended Courses</h4>
-        </div>
-      </div>
-      <div class="row row-cols-1 row-cols-md-4 g-4 mb-5">
-        <!-- Repite estas tarjetas cambiando cursoN.png -->
-        <div class="col">
-          <div class="card h-100 fondo_card">
-            <img src="${static.url('img/curso1.png')}"
-                 class="card-img-top"/>
-            <div class="card-body">
-              <h4 class="card-title color_guinda fw-bold">Título del curso</h4>
-              <p class="card-text color_guinda">Lorem ipsum dolor sit amet…</p>
-            </div>
-            <div class="card-footer text-center">
-              <a href="#" class="btn btn_join fondo_amarillo text-white">
-                Join now
-              </a>
-            </div>
-          </div>
-        </div>
-        <!-- … -->
-      </div>
-
-      <!-- Carrusel de vídeos -->
-      <div class="row">
-        <div class="col-12 fondo_verde_oscuro mt-5">
-          <%include file="../static_templates/online.html"/>
-        </div>
-      </div>
-      <!-- … resto de secciones … -->
-
-    </div>
-    <%include file="footer/footer.html"/>
-  </body>
+<%block name="footer">
+    <%include file="footer.html"/>
 </%block>
