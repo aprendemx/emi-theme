@@ -357,3 +357,5 @@ const { default: IndigoFooter } = await import('@edly-io/indigo-frontend-compone
 
   return config;
 }
+
+export default setConfig;

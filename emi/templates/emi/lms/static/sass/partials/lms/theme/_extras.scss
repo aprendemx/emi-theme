@@ -627,6 +627,988 @@ body.view-wiki{
 @import '../../../home/home';
 @import '../../../programs/programs';
 @import '../../../certificates/certificate';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 
-
+//********************
+ *  EMI- style monse marrana :)
+ ********************/
+ 
+ .fondo_guinda{
+    background-color:#5a122c!important;
+ }
+ 
+ .fondo_guinda_claro{
+   background-color:#99657a!important;
+ }
+ 
+ .fondo_verde_oscuro{
+     background-color: #1d2721!important;
+ }
+ 
+ .fondo_gris_claro{
+   background-color: #eaeaea!important;
+ }
+ 
+ .fondo_gris_oscuro{
+   background-color: #6b6b6b!important;
+ }
+ 
+ 
+ .fondo_card{
+   background-color:#dfd6c5; 
+ 
+ }
+ 
+ .fondo_amarillo{
+   background-color: #9f742e;
+ }
+ 
+ .fondo_crema{
+   background-color:#DFD6C5;
+ }
+ 
+ .color_guinda_claro{
+    color:#99657a!important;
+ }
+ 
+ .color_guinda{
+    color:#5a122c!important;
+ }
+ 
+ .color_amarillo{
+   color: #9f742e;
+ }
+ 
+ .color_negro{
+   color:#1a281f;
+ }
+ 
+ .color_gris_oscuro{
+   color: #6b6b6b!important;
+ }
+ 
+ .container-fluid{
+   padding-right: 0px !important; 
+     padding-left:  0px !important;
+ }
+ 
+ .color_verde_oscuro{
+     color: #1d2721!important;
+ }
+ 
+ .color_gris{
+   color:#9a9b9a;
+ }
+ 
+ .montserrat {
+   font-family: "Montserrat", sans-serif;
+   font-optical-sizing: auto;
+   font-style: normal;
+ }    
+ 
+ .navbar-nav {
+   display: flex;
+   align-items: center;
+ }
+ 
+ .navbar-nav li a{
+   color:white;
+   font-weight: bold;
+ }
+ 
+ .dropdown-menu li a{
+   color:black;
+ }
+ 
+ .nav-link:focus, .nav-link:hover{
+   color:white!important;
+ }
+ 
+ .navbar-nav li form input{
+   border-radius: 66px 66px 66px 66px;
+   -webkit-border-radius: 66px 66px 66px 66px;
+   -moz-border-radius: 66px 66px 66px 66px;
+   border:none!important;
+   color:white!important;
+ } 
+ 
+ .navbar-nav li form input:focus{
+   box-shadow:none!important;
+ }
+ 
+ .circulo {
+   width: 4rem;
+   height: 4rem;
+   border-radius: 50%;
+   background: #ebd295;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+     margin:0px auto;
+     padding:3%;
+ }
+ 
+ .circulo_amarillo_Osc {
+   width: 4rem;
+   height: 4rem;
+   border-radius: 50%;
+   background: #9f742e;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+     margin-left:10%;
+     padding:3%;
+ }
+ 
+ 
+ .circulo_guinda {
+   width: 3rem;
+   height: 3rem;
+   border-radius: 50%;
+   background:#5a122c;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+     margin:0px auto;
+     padding:2%;
+ }
+ 
+ 
+ 
+ .circulo_negro {
+   width: 3rem;
+   height: 3rem;
+   border-radius: 50%;
+   background: #1a281f;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   margin:0px auto;
+     padding:3%;
+ }
+ 
+ 
+ .circulo_gris {
+   width: 3rem;
+   height: 3rem;
+   border-radius: 50%;
+   background: #9a9b9a;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   margin:0px auto;
+     padding:3%;
+ }
+ 
+ .circulo_azul {
+     width: 3rem;
+     height: 3rem;
+     border-radius: 50%;
+     background: #45d8b4;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     text-align: center;
+     margin: 0px auto;
+     position: absolute;
+     z-index: 1;
+     margin-left: 7%;
+     margin-top: -.5%;
+ }
+ 
+ .img_fondo{
+    height:80vh;
+    background-image: url(../img/imagen_prin.png);
+    background-size: 100% auto;
+    background-position: center top;
+    background-repeat: no-repeat; 
+ }
+ .row {
+     --bs-gutter-x: 0;
+ }
+ 
+ .titulos{
+    border-radius: 66px 66px 66px 66px;
+    -webkit-border-radius: 66px 66px 66px 66px;
+    -moz-border-radius: 66px 66px 66px 66px;
+    border: solid 2px #9F742E;
+    padding:2% 0% 2% 2%;
+    font-weight: bold;
+ 
+ }
+ 
+ .card{
+   margin: 8% 8% 0% 8%;
+   box-shadow: 1px 0px 7px 1px rgba(0,0,0,0.71);
+   -webkit-box-shadow: 1px 0px 7px 1px rgba(0,0,0,0.71);
+   -moz-box-shadow: 1px 0px 7px 1px rgba(0,0,0,0.71);
+ }
+ 
+ .card-body {
+     padding: 2rem 2rem 0rem 2rem;
+ }
+ .card-text{
+   font-size: .8rem;
+ }
+ 
+ .btn_join{
+   width: 100%;
+   border-radius: 11px 11px 11px 11px;
+   -moz-border-radius: 11px 11px 11px 11px;
+   -webkit-border-radius: 11px 11px 11px 11px;
+   border:none!important;
+ 
+ }
+ 
+ .select_nivel{
+   width: 100%;
+   border-radius: 11px 11px 11px 11px;
+   -moz-border-radius: 11px 11px 11px 11px;
+   -webkit-border-radius: 11px 11px 11px 11px;
+   border: 2px solid #966f2d;
+   background-color: transparent!important;
+   text-align: center;
+   font-weight: bold;
+   color:white;
+ 
+ }
+ 
+ select option{
+   background-color: #1d2721;
+ }
+ 
+ 
+ .form-select {
+   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%2345d8b4' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3E%3C/svg%3E")!important;  
+ }
+ 
+ .circulo_rojo {
+         position: relative;
+       width: 19px;
+       height: 19px;
+       border-radius: 50%;
+       border: 1px solid #d64747;
+       background: transparent;
+     }
+ 
+ .circulo_rojo div {
+         position: relative;
+       width: 11px;
+       height: 11px;
+       border-radius: 50%;
+       background: #d64747;
+       margin: auto;
+       top: 3px;
+       left: 0;
+       bottom: 0;
+       right: 0;
+     }
+ 
+ .mlef{
+   margin-left: 2%!important;
+ }    
+ 
+ 
+ .carousel-item {
+   width: calc(100% / 4); /* number of items is 3 */
+ }
+ 
+ .carousel-item.active {
+   display: block;
+ }
+ 
+ .carousel-item.active + .carousel-item {
+   display: block;
+   transform: translateX(100%);
+ }
+ 
+ .carousel-item.active + .carousel-item + .carousel-item {
+   display: block;
+   transform: translateX(200%);
+ }
+ 
+ .carousel-item.active + .carousel-item + .carousel-item + .carousel-item {
+   display: block;
+   transform: translateX(300%);
+ }
+ 
+ /* 
+ - if you wish for n items in the carousel just this pattern for i from 1 to n
+ - (+ .carousel-item) * i = "+ .carousel-item" i times like above
+ .carousel-item.active (+ .carousel-item) * i {
+   display: block;
+   transform: translateX(i * 100%);
+ } */
+ 
+ .carousel-item.active.carousel-item-start + .carousel-item {
+   display: block;
+   transform: translateX(0);
+ }
+ 
+ .carousel-item.active.carousel-item-start + .carousel-item + .carousel-item {
+   display: block;
+   transform: translateX(100%);
+ }
+ 
+ .carousel-item.active.carousel-item-start
+   + .carousel-item
+   + .carousel-item
+   + .carousel-item {
+   display: block;
+   transform: translateX(200%);
+ }
+ 
+ /* 
+ - if you wish for n items in the carousel just this pattern for i from 1 to n
+ - (+ .carousel-item) * i = "+ .carousel-item" i times like above
+ .carousel-item.active.carousel-item-start (+ .carousel-item) * i {
+   display: block;
+   transform: translateX((i - 1) * 100%);
+ } */
+ 
+ .carousel-item.active.carousel-item-end + .carousel-item {
+   display: block;
+   transform: translateX(200%);
+ }
+ 
+ .carousel-item.active.carousel-item-end + .carousel-item + .carousel-item {
+   display: block;
+   transform: translateX(300%);
+ }
+ 
+ /* 
+ - if you wish for n items in the carousel just this pattern for i from 1 to n - 1
+ - (+ .carousel-item) * i = "+ .carousel-item" i times like above
+ .carousel-item.active.carousel-item-end (+ .carousel-item) * i {
+   display: block;
+   transform: translateX((i + 1) * 100%);
+ } */
+ 
+ .carousel-control-next, .carousel-control-prev {
+   width: 4%;
+ }
+ 
+ .carousel-inner {
+     padding-left: 5%;
+     padding-right: 5%;
+ }
+ 
+ iframe{
+   width: 100%;
+ }
+ 
+ 
+ .card-img-overlay{
+   /* From https://css.glass */
+   background: rgba(14, 14, 14, 0.49);
+   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+   backdrop-filter: blur(0px);
+   -webkit-backdrop-filter: blur(0px);
+   border: 1px solid rgba(14, 14, 14, 0.15);
+ }
+ 
+ .icon_video{
+   color: white; 
+   font-size: 3em;
+ }
+ 
+ .icon_prev{
+   font-size: 5em;
+   color:#45d8b4;
+ }
+ 
+ .carousel-control-next, .carousel-control-prev {
+    opacity:1;
+ }
+ 
+ .progress {
+     background-color: #45d8b4;
+     border-radius: 3.25rem;
+ }
+ 
+ .progress-bar {
+   background-color: #1A2820;
+ 
+ }
+ 
+ .card-footer {
+     padding: 0px;
+     background-color: transparent;
+     border-top: none;
+ }
+ 
+ .text_ajust{
+     height: 30vh;
+ }
+ 
+ .img_cards{
+   height: 23vh;
+  }
+ 
+  .desactivado{
+   background-color: #CECECE;	
+ }
+ 
+  .desactivado img {
+     filter: grayscale(1);	
+  }
+ 
+  .desactivado h4, .desactivado.card-text, .desactivado .color_guinda{
+   color: #6B6B6B!important;
+  }
+ 
+  .desactivado .circulo_guinda{
+   background-color: #6B6B6B;
+  }
+ 
+  .desactivado .progress, .desactivado .progress .progress-bar, .desactivado .fondo_amarillo {
+   background-color: #6B6B6B;
+  }
+ 
+  .icon_prev2{
+   font-size: 5em;
+   color:#5a122c;
+ }
+ 
+ .carrusel2{
+     width: calc(100% / 3)!important;
+ }
+ 
+ .list-inline>li {
+     display: inline-block;
+ }	
+ 
+ .list-inline>li>a {
+     line-height: 1.5!important;
+ }
+ 
+ .img_principal{
+   width: 100%;
+     height: 100%;
+     object-fit: cover;
+ }
+ 
+ .navbar-brand {
+   margin-right: 8rem;
+     margin-left: 4rem;
+ }
+ 
+ .navbar-expand-lg .navbar-nav .nav-link {
+   padding-right: 2.5rem;
+   padding-left: 2.5rem;
+ }
+ 
+ 
+ .navbar-expand-lg .navbar-nav .nav-link, .d-flex {
+   padding-right: 2.5rem;
+   padding-left: 2.5rem;
+ }
+ 
+ 
+ .navbar-expand-lg .navbar-nav  .cir{
+   padding-left: .5rem;
+   text-decoration: none;
+ }
+ 
+ .course{
+     width: calc(100% /1)!important;
+   height: 50vh;
+ }
+ 
+ .course_car{
+   padding-left: 0%!important;
+     padding-right: 0%!important;
+ 
+ }
+ 
+ .fondo_negro_d{
+   background: rgba(14, 14, 14, 0.49);
+   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+   backdrop-filter: blur(0px);
+   -webkit-backdrop-filter: blur(0px);
+   border: 1px solid rgba(14, 14, 14, 0.15);
+ }
+ 
+ .course_caption {
+     position: absolute;
+     right: 0%!important;
+     bottom: 0%!important;
+     left: 0%!important;
+     padding-top: 1.25rem;
+     padding-bottom: 1.25rem;
+     color: #fff;
+     text-align: start;
+     width: 100%;
+     height: 100%;
+ }
+ 
+ .menu_cursos{
+   padding-bottom: 2%;
+ }
+ 
+ .menu_cursos .nav-link{ 
+   color:black!important;
+   font-weight: bold;
+   padding-left: 3% !important;
+     padding-right: 3% !important;
+ }
+ 
+ .menu_cursos .nav-link:hover{
+   color:black!important;
+   font-weight: bold;
+   border: transparent!important;
+   
+ }
+ 
+ .menu_cursos .active{
+   padding-left: 3%!important;
+     padding-right: 3%!important;
+     border: solid 2px #9F742E!important;
+   border-radius: 15px 15px 15px 15px!important;
+   -webkit-border-radius: 15px 15px 15px 15px!important;
+   -moz-border-radius: 15px 15px 15px 15px!important;
+   color: #9f742e!important;
+   font-weight: bold;
+ }
+ 
+ .menu_cursos .active:hover{
+    color:#9F742E!important;
+    border: solid 2px #9F742E!important;
+ 
+ }
+ 
+ .hp_50{
+   height: 50vh!important;
+ }
+ 
+ .pog_course{
+   background-color: #9F742E;
+ }
+ 
+ 
+ .pog_course .progress-bar{
+   background-color: #5a122c;
+ 
+ }
+ 
+ /* Audios */
+ .volume-slider {
+     width: 0;
+     opacity: 0;
+     transition: opacity 0.5s ease, width 0.5s ease;
+ }
+ 
+ .volume-control-container:hover .volume-slider {
+     width: 100%;
+     /* Adjust based on the desired width when visible */
+     opacity: 1;
+ }
+ 
+ .text-justify {
+     text-align: justify;
+     text-justify: inter-word;
+ }
+ 
+ .album-icon {
+     width: 100%;
+     margin-bottom: 1em;
+     border-radius: 10px;
+ }
+ 
+ .album-col {
+     text-align: center;
+     padding: 2em;
+ }
+ 
+ .album-col button {
+     all: unset;
+ }
+ 
+ .album-col button:hover {
+     font-weight: bold;
+     cursor: pointer;
+ }
+ 
+ .album-col li {
+     background: transparent;
+ }
+ 
+ #albumTitle {
+     margin-bottom: 1em;
+     font-size: xx-large;
+ }
+ 
+ .song-col {
+     padding: 2em;
+ }
+ 
+ .song-col header {
+     padding-bottom: 1em;
+ }
+ 
+ .card_musica {
+     border: 2px solid rgb(215, 215, 215);
+     box-shadow: 2px 2px 4px rgb(128, 128, 128);
+     background: transparent;
+ }
+ 
+ .progress_audio {
+     background: transparent;
+ }
+ 
+ #songTitleCard {
+     margin-top: 0.5em;
+     margin-bottom: 0.5em;
+ }
+ 
+ i {
+     font-size: 1.25em;
+ }
+ 
+ #songCover {
+     border-radius: 10px;
+     padding: 1em;
+     max-width: 100%;
+ }
+ 
+ 
+ 
+ #songAuthor {
+     font-size:large;
+ }
+ 
+ #songImageContainer{
+   padding-right: 0!important;
+     padding-left: 0!important;
+ }
+ 
+ /* ****************** */
+ 
+ .desenfocar{
+   filter: blur(1.5rem);
+ }
+ 
+ .div_img{
+ 
+   display: inline-block;
+     position: relative;
+     width: 85%;
+     height: 85%;
+     overflow: hidden;
+     border-radius: 50%;
+ }
+ 
+ .img_redonda{
+   width: 100%;
+   height: auto;
+ }
+ 
+ .border_blanco{
+   border: solid 2px white;
+ }
+ 
+ .select_nivel_C {
+     width: 100%;
+     border-radius: 11px 11px 11px 11px;
+     -moz-border-radius: 11px 11px 11px 11px;
+     -webkit-border-radius: 11px 11px 11px 11px;
+     border: 2px solid #966f2d;
+     text-align: center;
+     font-weight: bold;
+     color: #5a122c;
+ }
+ 
+ .select_nivel_C option{
+   background-color: white!important;
+ }
+ 
+ .ps_9{
+   padding-left: 9rem;
+ }
+ 
+ .title_docuementos{
+   background-color: #966f2d;
+   color:#1a281f;
+   padding: 2%;
+   margin: 0;;
+   border-radius: 38px 38px 0px 0px;
+ }
+ 
+ .sn_br{
+   border-right: 0px;
+ }
+ 
+ 
+ .sn_bl{
+   border-left: 0px;
+ }
+ 
+ 
+ .circulo_guinda_certificado {
+   width: 1rem;
+   height: 1rem;
+   border-radius: 50%;
+   background:#5a122c;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+     margin:0px auto;
+     padding:2%;
+   font-size: .4rem;
+ }
+ 
+ .circulo_guinda_porcent {
+   width: 7rem;
+   height: 7rem;
+   border-radius: 50%;
+   background:#5a122c;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+     margin:0px auto;
+     padding:2%;
+   font-size: 2.4rem;
+ }
+ 
+ .circulo_negro_certificado {
+   width: 1rem;
+   height: 1rem;
+   border-radius: 50%;
+   background: #1a281f;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+     margin:0px auto;
+     padding:2%;
+   font-size: .4rem;
+ }
+ 
+ 
+ .circulo_gris_certificado {
+   width: 1rem;
+   height: 1rem;
+   border-radius: 50%;
+   background: #6b6b6b;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+     margin:0px auto;
+     padding:2%;
+   font-size: .4rem;
+ }
+ 
+ .circulo_gris_porcent {
+   width: 7rem;
+   height: 7rem;
+   border-radius: 50%;
+   background: #9a9b9a;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+     margin:0px auto;
+     padding:2%;
+   font-size: 2.4rem;
+ }
+ 
+ 
+ 
+ 
+ .titul_cert{
+ 
+   font-size: 0.7rem!important;
+     padding-top: .4rem;
+ }
+ 
+ .tam_cert{
+   height: 29vh;
+ }
+ 
+ .diploma{
+   width: 68%;
+ }
+ 
+ .centrar{
+   display: flex;
+     justify-content: center;
+     align-items: center;
+ }
+ 
+ .titulos_desc{
+   border-radius: 66px 66px 66px 66px;
+   -webkit-border-radius: 66px 66px 66px 66px;
+   -moz-border-radius: 66px 66px 66px 66px;
+   border: solid 2px #9a9b9a;
+   padding:2% 0% 2% 2%;
+   font-weight: bold;
+  }
+ 
+  .circulo_amarillo_const {
+   width: 2rem;
+   height: 2rem;
+   border-radius: 50%;
+   background:#9f742e;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+     padding:2%;
+     margin-right: 2%;
+     margin-top: 2%;
+ }
+ .wi80{
+   width: 80%;
+ }
+ 
+ h5.linea {
+   margin-top: 30px;
+   text-align: center;
+   }
+ 
+   h5.linea {
+   position: relative;
+   z-index: 1;
+   }
+   h5.linea:before {
+   border-top: 2px solid #6B6B6B;
+   content: "";
+   margin: 0 auto;
+   position: absolute;
+   top: 50%;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   width: 95%;
+   z-index: -1;
+   }
+ 
+   h5.linea span {
+   
+   background: #fff;
+   padding: 0 15px;
+   }
+ 
+   .quiz-container {
+     background-color: white;
+     border-radius: 15px;
+     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+     padding: 30px;
+     max-width: 600px;
+     width: 100%;
+     margin: auto;
+ }
+ 
+ .quiz-header {
+     text-align: center;
+     margin-bottom: 30px;
+ }
+ 
+ .question {
+     font-size: 1.2rem;
+     margin-bottom: 20px;
+ }
+ 
+ .options {
+     display: grid;
+     gap: 10px;
+ }
+ 
+ .option {
+     background-color: #f8f9fa;
+     border: 2px solid #dee2e6;
+     border-radius: 10px;
+   padding: 3px;
+     cursor: pointer;
+     transition: all 0.3s ease;
+ }
+ 
+ .option:hover {
+     background-color: #e9ecef;
+ }
+ 
+ .option.selected {
+     background-color: #cfe2ff;
+     border-color: #0d6efd;
+ }
+ 
+ .option.correct {
+     background-color: #d4edda;
+     border-color: #28a745;
+ }
+ 
+ .option.incorrect {
+     background-color: #f8d7da;
+     border-color: #dc3545;
+ }
+ 
+ .quiz-footer {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     margin-top: 30px;
+ }
+ 
+ .timer {
+     font-size: 1.2rem;
+     font-weight: bold;
+ }
+ 
+ .progress {
+     height: 10px;
+     margin-bottom: 20px;
+ }
+ 
+ .results {
+     text-align: center;
+ }
+ 
+ .result-icon {
+     font-size: 4rem;
+     margin-bottom: 20px;
+ }
+ 
+ .score {
+     font-size: 2rem;
+     font-weight: bold;
+     margin-bottom: 20px;
+ }
+ 
+ .circulo_guinda_cuestion {
+     width: 1rem;
+     height: 1rem;
+     border-radius: 50%;
+     background: #5a122c;
+     display: flex
+ ;
+     justify-content: center;
+     align-items: center;
+     text-align: center;
+     padding: 2%;
+     margin-top: -12px;
+     position: absolute;
+     margin-left: -.5%;
+ }
+ 
+ @media (min-width: 1464px) and (max-width: 20001px) {
+   /*body {
+     background: #de3163 !important;
+   }*/
+ 
+   .tam_cert {
+     height: 20vh;
+   }
+ 
+ 
+   
+ 
+   }
