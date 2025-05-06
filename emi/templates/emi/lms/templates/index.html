@@ -1,58 +1,101 @@
 <%page expression_filter="h"/>
 <%inherit file="main.html" />
 <%namespace name='static' file='static_content.html'/>
+
 <%!
 from django.utils.translation import gettext as _
 from django.urls import reverse
-
-from openedx.core.djangolib.markup import HTML, Text
 %>
 
-<main id="main" aria-label="Content" tabindex="-1">
-    <section class="home style-logout" style="padding-right: 0px; padding-left: 0px;">
-      <header>
-        <div class="outer-wrapper">
+<main id="main" aria-label="Content" tabindex="-1" class="montserrat">
+    <div class="container-fluid">
 
-            <div class="title" style="padding-right: 15px; padding-left: 15px;">
-            % if settings.FEATURES.get('ENABLE_COURSE_DISCOVERY'):
-              <div class="course-search">
-                <form method="get" action="/courses">
-                  <!-- UPDATE IN INDIGO2.1 - Change the structure for search bar  -->
-                  <div class="search-field-wrapper">
-                    <div class="button-holder">
-                      <button class="search-button" type="submit">
-                        Buscar
-                      </button>
-                    </div>
-
-                  </div>
-                </form>
-              </div>
-            % endif
-
-          </div>
+        <!-- Imagen fondo inicial -->
+        <div class="row mb-5">
+            <div class="col-md-12">
+                <img src="${static.url("images/imagen_prin.png")}" alt="Imagen principal" class="img_principal" style="width:100%; height:auto;">
+            </div>
         </div>
 
-      </header>
-      <%include file="${courses_list}" />
+        <!-- Div titulo cursos -->
+        <div class="row mb-3">
+            <div class="col-md-3 text-center ms-3">
+                <h4 class="color_guinda titulos">Recommended Courses</h4>
+            </div>
+        </div>
 
-    </section>
+        <!-- Tarjetas de cursos -->
+        <div class="row row-cols-1 row-cols-md-4 g-4 mb-5">
+            % for i in range(1, 5):
+            <div class="col">
+                <div class="card h-100 fondo_card">
+                    <img src="${static.url("images/curso${i}.png")}" class="card-img-top" style="height: 180px; object-fit: cover;">
+                    <div class="card-body">
+                        <h4 class="card-title color_guinda fw-bold">Recommended Course Title ${i}</h4>
+                        <h6 class="card-title color_guinda">Description</h6>
+                        <p class="card-text color_guinda">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+                        </p>
+                        <p class="text-center color_guinda">
+                            <span><i class="bi bi-person"></i> 895</span>
+                        </p>
+                        <div class="card-footer text-body-secondary">
+                            <a href="#" class="btn btn_join fondo_amarillo text-white">Join now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            % endfor
+        </div>
+
+        <!-- Div titulo Resources -->
+        <div class="row mb-3">
+            <div class="col-md-3 text-center ms-3">
+                <h4 class="color_verde_oscuro titulos">Resources. <span style="font-weight:500">Have fun!</span></h4>
+            </div>
+        </div>
+
+        <!-- Tarjetas de resources -->
+        <div class="row row-cols-1 row-cols-md-6 g-4 mb-5">
+            % for i in range(1, 7):
+            <div class="col mb-3">
+                <div class="card h-100 fondo_card">
+                    <img src="${static.url("images/rc_${i}.png")}" class="card-img-top" style="height: 120px; object-fit: contain;">
+                    <div class="card-body bg-light">
+                        <h4 class="card-title">Resource ${i}</h4>
+                    </div>
+                </div>
+            </div>
+            % endfor
+        </div>
+
+        <!-- Div titulo My classroom -->
+        <div class="row fondo_guinda">
+            <div class="col-md-3 text-center ms-3">
+                <h4 class="text-light titulos">My classroom</h4>
+            </div>
+        </div>
+
+        <!-- Tarjetas My classroom -->
+        <div class="row row-cols-1 row-cols-md-3 g-4 mb-5 fondo_guinda">
+            % for i in range(1, 4):
+            <div class="col">
+                <div class="card h-100 fondo_card">
+                    <img src="${static.url("images/curso${i}.png")}" class="card-img-top" style="height: 180px; object-fit: cover;">
+                    <div class="card-body">
+                        <h4 class="card-title color_guinda fw-bold">Course ${i}</h4>
+                        <h6 class="card-title color_guinda">Description</h6>
+                        <p class="card-text color_guinda">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        </p>
+                        <div class="progress mb-2">
+                            <div class="progress-bar" role="progressbar" style="width: ${(i * 30) % 100}%" aria-valuenow="${(i * 30) % 100}" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <a href="#" class="btn btn_join fondo_amarillo text-white">Join now</a>
+                    </div>
+                </div>
+            </div>
+            % endfor
+        </div>
+    </div>
 </main>
-
-<%block name="js_extra">
-   <script type="text/javascript">
-      $(window).load(function() {
-         if(getParameterByName('next')) {
-              $('#login').trigger("click");
-         }
-      })
-   </script>
-</%block>
-
-% if show_signup_immediately is not UNDEFINED:
-  ## NOTE: This won't work in production, because anonymous views are cached, so it will
-  ## show either with or without this extra js for 3 minutes at a time.
-<script type="text/javascript">
-  $(window).load(function() {$('#signup_action').trigger("click");});
-</script>
-% endif
