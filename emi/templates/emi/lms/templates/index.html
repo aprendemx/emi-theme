@@ -26,73 +26,7 @@ from django.urls import reverse
 
         <!-- Tarjetas de cursos -->
         <div class="row row-cols-1 row-cols-md-4 g-4 mb-5">
-            <div class="col">
-                <div class="card h-100 fondo_card">
-                    <img src="${static.url("images/curso1.png")}" class="card-img-top">
-                    <div class="card-body">
-                        <h4 class="card-title color_guinda fw-bold">Recommended Course Title</h4>
-                        <h6 class="card-title color_guinda">Description</h6>
-                        <p class="card-text color_guinda">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <p class="text-center color_guinda">
-                            <span><i class="bi bi-person"></i> 895</span>
-                        </p>
-                        <div class="card-footer text-center">
-                            <a href="#" class="btn btn_join fondo_amarillo text-white">Join now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col">
-                <div class="card h-100 fondo_card">
-                    <img src="${static.url("images/curso2.png")}" class="card-img-top">
-                    <div class="card-body">
-                        <h4 class="card-title color_guinda fw-bold">Recommended Course Title</h4>
-                        <h6 class="card-title color_guinda">Description</h6>
-                        <p class="card-text color_guinda">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <p class="text-center color_guinda">
-                            <span><i class="bi bi-person"></i> 895</span>
-                        </p>
-                        <div class="card-footer text-center">
-                            <a href="#" class="btn btn_join fondo_amarillo text-white">Join now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col">
-                <div class="card h-100 fondo_card">
-                    <img src="${static.url("images/curso3.png")}" class="card-img-top">
-                    <div class="card-body">
-                        <h4 class="card-title color_guinda fw-bold">Recommended Course Title</h4>
-                        <h6 class="card-title color_guinda">Description</h6>
-                        <p class="card-text color_guinda">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <p class="text-center color_guinda">
-                            <span><i class="bi bi-person"></i> 895</span>
-                        </p>
-                        <div class="card-footer text-center">
-                            <a href="#" class="btn btn_join fondo_amarillo text-white">Join now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col">
-                <div class="card h-100 fondo_card">
-                    <img src="${static.url("images/curso4.png")}" class="card-img-top">
-                    <div class="card-body">
-                        <h4 class="card-title color_guinda fw-bold">Recommended Course Title</h4>
-                        <h6 class="card-title color_guinda">Description</h6>
-                        <p class="card-text color_guinda">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <p class="text-center color_guinda">
-                            <span><i class="bi bi-person"></i> 895</span>
-                        </p>
-                        <div class="card-footer text-center">
-                            <a href="#" class="btn btn_join fondo_amarillo text-white">Join now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <%include file="${courses_list}" />
         </div>
 
         <!-- Div titulo Resources -->
