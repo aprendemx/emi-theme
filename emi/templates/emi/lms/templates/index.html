@@ -26,26 +26,73 @@ from django.urls import reverse
 
         <!-- Tarjetas de cursos -->
         <div class="row row-cols-1 row-cols-md-4 g-4 mb-5">
-            % for i in range(1, 5):
             <div class="col">
-                <div class="card h-100 fondo_card" style="border-radius: 8px; box-shadow: 2px 2px 8px #ccc;">
-                    <img src="${static.url("images/curso${i}.png")}" class="card-img-top" style="height: 180px; object-fit: cover; border-top-left-radius: 8px; border-top-right-radius: 8px;">
+                <div class="card h-100 fondo_card">
+                    <img src="${static.url("images/curso1.png")}" class="card-img-top">
                     <div class="card-body">
-                        <h4 class="card-title color_guinda fw-bold">Recommended Course Title ${i}</h4>
+                        <h4 class="card-title color_guinda fw-bold">Recommended Course Title</h4>
                         <h6 class="card-title color_guinda">Description</h6>
-                        <p class="card-text color_guinda">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
-                        </p>
+                        <p class="card-text color_guinda">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                         <p class="text-center color_guinda">
                             <span><i class="bi bi-person"></i> 895</span>
                         </p>
-                    </div>
-                    <div class="card-footer text-center">
-                        <a href="#" class="btn btn_join fondo_amarillo text-white">Join now</a>
+                        <div class="card-footer text-center">
+                            <a href="#" class="btn btn_join fondo_amarillo text-white">Join now</a>
+                        </div>
                     </div>
                 </div>
             </div>
-            % endfor
+
+            <div class="col">
+                <div class="card h-100 fondo_card">
+                    <img src="${static.url("images/curso2.png")}" class="card-img-top">
+                    <div class="card-body">
+                        <h4 class="card-title color_guinda fw-bold">Recommended Course Title</h4>
+                        <h6 class="card-title color_guinda">Description</h6>
+                        <p class="card-text color_guinda">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <p class="text-center color_guinda">
+                            <span><i class="bi bi-person"></i> 895</span>
+                        </p>
+                        <div class="card-footer text-center">
+                            <a href="#" class="btn btn_join fondo_amarillo text-white">Join now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100 fondo_card">
+                    <img src="${static.url("images/curso3.png")}" class="card-img-top">
+                    <div class="card-body">
+                        <h4 class="card-title color_guinda fw-bold">Recommended Course Title</h4>
+                        <h6 class="card-title color_guinda">Description</h6>
+                        <p class="card-text color_guinda">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <p class="text-center color_guinda">
+                            <span><i class="bi bi-person"></i> 895</span>
+                        </p>
+                        <div class="card-footer text-center">
+                            <a href="#" class="btn btn_join fondo_amarillo text-white">Join now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100 fondo_card">
+                    <img src="${static.url("images/curso4.png")}" class="card-img-top">
+                    <div class="card-body">
+                        <h4 class="card-title color_guinda fw-bold">Recommended Course Title</h4>
+                        <h6 class="card-title color_guinda">Description</h6>
+                        <p class="card-text color_guinda">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <p class="text-center color_guinda">
+                            <span><i class="bi bi-person"></i> 895</span>
+                        </p>
+                        <div class="card-footer text-center">
+                            <a href="#" class="btn btn_join fondo_amarillo text-white">Join now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Div titulo Resources -->
@@ -57,12 +104,12 @@ from django.urls import reverse
 
         <!-- Tarjetas de recursos -->
         <div class="row row-cols-1 row-cols-md-6 g-4 mb-5">
-            % for i in range(1, 7):
+            % for i, title in enumerate(['Books', 'Comics', 'Music', 'Podcast', 'Challenges', 'Forums'], start=1):
             <div class="col mb-3">
-                <div class="card h-100 fondo_card" style="border-radius: 8px; box-shadow: 2px 2px 8px #ccc;">
+                <div class="card h-100 fondo_card">
                     <img src="${static.url("images/rc_${i}.png")}" class="card-img-top" style="height: 120px; object-fit: contain;">
                     <div class="card-body bg-light text-center">
-                        <h5 class="card-title">Resource ${i}</h5>
+                        <h5 class="card-title">${title}</h5>
                     </div>
                 </div>
             </div>
@@ -78,18 +125,15 @@ from django.urls import reverse
 
         <!-- Tarjetas My classroom -->
         <div class="row row-cols-1 row-cols-md-3 g-4 mb-5 fondo_guinda">
-            % for i in range(1, 4):
             <div class="col">
-                <div class="card h-100 fondo_card" style="border-radius: 8px; box-shadow: 2px 2px 8px #ccc;">
-                    <img src="${static.url("images/curso${i}.png")}" class="card-img-top" style="height: 180px; object-fit: cover;">
+                <div class="card h-100 fondo_card">
+                    <img src="${static.url("images/curso1.png")}" class="card-img-top">
                     <div class="card-body">
-                        <h4 class="card-title color_guinda fw-bold">Course ${i}</h4>
+                        <h4 class="card-title color_guinda fw-bold">The next step</h4>
                         <h6 class="card-title color_guinda">Description</h6>
-                        <p class="card-text color_guinda">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        </p>
+                        <p class="card-text color_guinda">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                         <div class="progress mb-2">
-                            <div class="progress-bar" role="progressbar" style="width: ${(i * 30) % 100}%" aria-valuenow="${(i * 30) % 100}" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar" role="progressbar" style="width: 10%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
                     <div class="card-footer text-center">
@@ -97,7 +141,40 @@ from django.urls import reverse
                     </div>
                 </div>
             </div>
-            % endfor
+
+            <div class="col">
+                <div class="card h-100 fondo_card">
+                    <img src="${static.url("images/curso2.png")}" class="card-img-top">
+                    <div class="card-body">
+                        <h4 class="card-title color_guinda fw-bold">Grammar & Grandma</h4>
+                        <h6 class="card-title color_guinda">Description</h6>
+                        <p class="card-text color_guinda">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <div class="progress mb-2">
+                            <div class="progress-bar" role="progressbar" style="width: 70%;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a href="#" class="btn btn_join fondo_amarillo text-white">Join now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card h-100 fondo_card">
+                    <img src="${static.url("images/curso3.png")}" class="card-img-top">
+                    <div class="card-body">
+                        <h4 class="card-title color_guinda fw-bold">Spelling</h4>
+                        <h6 class="card-title color_guinda">Description</h6>
+                        <p class="card-text color_guinda">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <div class="progress mb-2">
+                            <div class="progress-bar" role="progressbar" style="width: 70%;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a href="#" class="btn btn_join fondo_amarillo text-white">Join now</a>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>
