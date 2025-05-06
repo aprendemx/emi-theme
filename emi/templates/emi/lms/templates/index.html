@@ -26,73 +26,7 @@ from django.urls import reverse
 
         <!-- Tarjetas de cursos -->
         <div class="row row-cols-1 row-cols-md-4 g-4 mb-5">
-            <div class="col">
-                <div class="card h-100 fondo_card">
-                    <img src="${static.url("images/curso1.png")}" class="card-img-top">
-                    <div class="card-body">
-                        <h4 class="card-title color_guinda fw-bold">Recommended Course Title</h4>
-                        <h6 class="card-title color_guinda">Description</h6>
-                        <p class="card-text color_guinda">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <p class="text-center color_guinda">
-                            <span><i class="bi bi-person"></i> 895</span>
-                        </p>
-                        <div class="card-footer text-center">
-                            <a href="#" class="btn btn_join fondo_amarillo text-white">Join now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col">
-                <div class="card h-100 fondo_card">
-                    <img src="${static.url("images/curso2.png")}" class="card-img-top">
-                    <div class="card-body">
-                        <h4 class="card-title color_guinda fw-bold">Recommended Course Title</h4>
-                        <h6 class="card-title color_guinda">Description</h6>
-                        <p class="card-text color_guinda">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <p class="text-center color_guinda">
-                            <span><i class="bi bi-person"></i> 895</span>
-                        </p>
-                        <div class="card-footer text-center">
-                            <a href="#" class="btn btn_join fondo_amarillo text-white">Join now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col">
-                <div class="card h-100 fondo_card">
-                    <img src="${static.url("images/curso3.png")}" class="card-img-top">
-                    <div class="card-body">
-                        <h4 class="card-title color_guinda fw-bold">Recommended Course Title</h4>
-                        <h6 class="card-title color_guinda">Description</h6>
-                        <p class="card-text color_guinda">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <p class="text-center color_guinda">
-                            <span><i class="bi bi-person"></i> 895</span>
-                        </p>
-                        <div class="card-footer text-center">
-                            <a href="#" class="btn btn_join fondo_amarillo text-white">Join now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col">
-                <div class="card h-100 fondo_card">
-                    <img src="${static.url("images/curso4.png")}" class="card-img-top">
-                    <div class="card-body">
-                        <h4 class="card-title color_guinda fw-bold">Recommended Course Title</h4>
-                        <h6 class="card-title color_guinda">Description</h6>
-                        <p class="card-text color_guinda">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <p class="text-center color_guinda">
-                            <span><i class="bi bi-person"></i> 895</span>
-                        </p>
-                        <div class="card-footer text-center">
-                            <a href="#" class="btn btn_join fondo_amarillo text-white">Join now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <%include file="${courses_list}" />
         </div>
 
         <!-- Div titulo Resources -->
@@ -101,6 +35,117 @@ from django.urls import reverse
                 <h4 class="color_verde_oscuro titulos">Resources. <span style="font-weight:500">Have fun!</span></h4>
             </div>
         </div>
+
+        <!-- Carrusel de videos -->
+        <div class="row">
+            <div class="col-md-12 fondo_verde_oscuro mt-5">
+                <!-- Select -->
+                <div class="row mt-5 mlef">
+                    <div class="col-md-2">
+                        <select class="form-select select_nivel" aria-label="Default select example">
+                            <option selected>Level A1</option>
+                            <option value="1">Level B1</option>
+                            <option value="2">Level C1</option>
+                        </select>
+                    </div>
+                    <div class="col-md-10">
+                    </div>
+                </div>
+                <!-- Fin select -->
+                <!-- Videos -->
+                <div class="container-fluid text-center my-3 mb-5">
+                    <div class="row">
+                        <div class="row mx-auto my-auto justify-content-center">
+                            <div id="recipeCarousel" class="carousel carousel-dark slide" data-bs-touch="false"
+                                 data-bs-interval="false" data-bs-wrap="false">
+                                <div class="carousel-inner" role="listbox">
+                                    <div class="carousel-item active">
+                                        <div class="col-md-12">
+                                            <div class="card bg-dark text-white">
+                                                <img class="card-img" src="img/videos.jpg" alt="Card image">
+                                                <div class="card-img-overlay">
+                                                    <div style="margin-top: 30%;">
+                                                        <i class="bi bi-play-circle icon_video"></i>
+                                                    </div>
+                                                    <h5 class="card-title text-start fw-bold mt-2"> Titulo
+                                                        contenido </h5>
+                                                    <p class="card-text text-start mb-0">British Council</p>
+                                                    <p class="card-text text-start">Podcast</p>
+                                                    <p class="card-text text-start mt-5">LEVEL A1</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="col-md-12">
+                                            <div class="card bg-dark text-white">
+                                                <img class="card-img" src="img/imagen3.jpg" alt="Card image">
+                                                <div class="card-img-overlay">
+                                                    <div style="margin-top: 30%;">
+                                                        <i class="bi bi-play-circle icon_video"></i>
+                                                    </div>
+                                                    <h5 class="card-title text-start fw-bold mt-2"> Titulo
+                                                        contenido </h5>
+                                                    <p class="card-text text-start mb-0">SEP</p>
+                                                    <p class="card-text text-start">Book</p>
+                                                    <p class="card-text text-start mt-5">LEVEL A1</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="col-md-12">
+                                            <div class="card bg-dark text-white">
+                                                <img class="card-img" src="img/imagen2.jpg" alt="Card image">
+                                                <div class="card-img-overlay">
+                                                    <div style="margin-top: 30%;">
+                                                        <i class="bi bi-play-circle icon_video"></i>
+                                                    </div>
+                                                    <h5 class="card-title text-start fw-bold mt-2"> Titulo
+                                                        contenido </h5>
+                                                    <p class="card-text text-start mb-0">SEP</p>
+                                                    <p class="card-text text-start">Book</p>
+                                                    <p class="card-text text-start mt-5">LEVEL A1</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="col-md-12">
+                                            <div class="card bg-dark text-white">
+                                                <img class="card-img" src="img/imagen4.jpg" alt="Card image">
+                                                <div class="card-img-overlay">
+                                                    <div style="margin-top: 30%;">
+                                                        <i class="bi bi-play-circle icon_video"></i>
+                                                    </div>
+                                                    <h5 class="card-title text-start fw-bold mt-2"> Titulo
+                                                        contenido </h5>
+                                                    <p class="card-text text-start mb-0">@aprende.mx</p>
+                                                    <p class="card-text text-start">TV Show</p>
+                                                    <p class="card-text text-start mt-5">LEVEL A1</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel"
+                                   role="button" data-bs-slide="prev">
+                                    <i class="bi bi-chevron-left icon_prev"></i>
+                                </a>
+                                <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel"
+                                   role="button" data-bs-slide="next">
+                                    <i class="bi bi-chevron-right icon_prev"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fin de videos -->
+            </div>
+        </div>
+    </div>
+
 
         <!-- Tarjetas de recursos -->
         <div class="row row-cols-1 row-cols-md-6 g-4 mb-5">
