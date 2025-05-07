@@ -1,6 +1,7 @@
 deploy_dev:
   stage: deploy
   script:
+    - export TUTOR_ROOT=/opt/tutor
     - source /opt/emi/venv/bin/activate
     - rm -rf  "$(tutor config printroot)/env/build/openedx/themes/emi/*"
     - cp -rf * "$(tutor config printroot)/env/build/openedx/themes/emi"
