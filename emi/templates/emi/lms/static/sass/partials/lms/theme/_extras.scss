@@ -836,7 +836,7 @@ body.view-wiki{
     border-radius: 66px 66px 66px 66px;
     -webkit-border-radius: 66px 66px 66px 66px;
     -moz-border-radius: 66px 66px 66px 66px;
-    border: solid 2px #9F742E;
+    border: solid 2px #9F742E!important;
     padding:2% 0% 2% 2%;
     font-weight: bold;
  
@@ -1105,8 +1105,8 @@ body.view-wiki{
  
  
  .navbar-expand-lg .navbar-nav .nav-link, .d-flex {
-   padding-right: 2.5rem;
-   padding-left: 2.5rem;
+   padding-right: 2.5rem!important;
+   padding-left: 2.5rem!important;
  }
  
  
