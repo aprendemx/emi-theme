@@ -1,0 +1,289 @@
+<%page expression_filter="h" args="online_help_token, use_cookie_banner=False"/>
+<%!
+from django.utils.translation import gettext as _
+from django.urls import reverse
+from openedx.core.djangoapps.content.course_overviews.models import CourseOverview
+%>
+<%namespace name='static' file='../static_content.html'/>
+<%namespace file='../main.html' import="login_query"/>
+
+<%
+# Los cursos se cargarán dinámicamente vía AJAX
+# Esto es más eficiente y no bloquea la carga de la página
+available_courses = []
+%>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<header class="global-header">
+    <nav class="navbar navbar-expand-lg fondo_guinda px-2 px-md-3" style="position: relative !important;">
+        <div class="container-fluid">
+            <!-- Logo -->
+            <a class="navbar-brand brand-logos" href="/">
+                <img src="${static.url("images/Logo_SEP.png")}" alt="Logo SEP" class="logo-img logo-sep">
+                <span class="logo-separator" aria-hidden="true"></span>
+                <img src="${static.url("images/EMI_letras.png")}" alt="EMI" class="logo-img logo-text">
+            </a>
+
+            <!-- Buscador de cursos - Solo visible en pantallas medianas y grandes -->
+            % if settings.FEATURES.get('ENABLE_COURSE_DISCOVERY'):
+                <div class="search-container d-none d-md-flex flex-grow-1 mx-3">
+                    <form method="get" action="/courses" class="w-100">
+                        <input class="form-control search-input" 
+                               name="search_query"
+                               type="search"
+                               placeholder="${_('Busca tu curso')}"
+                               aria-label="Search">
+                    </form>
+                </div>
+            % endif
+
+            <!-- Navegación principal -->
+            <div class="navbar-nav flex-row">
+                % if user.is_authenticated:
+                    <a href="${reverse('dashboard')}" class="btn btn-outline-light btn-sm me-2 toggle-user-dropdown" role="button">
+                        <span class="d-none d-sm-inline">${_("Mi cuenta")}</span>
+                        <span class="d-sm-none">${_("Cuenta")}</span>
+                    </a>
+                % else:
+                    <a href="/login${login_query()}" class="nav-link p-0" aria-label="${_('Iniciar sesión')}">
+                        <div class="circulo">Login</div>
+                    </a>
+                % endif
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- Bootstrap JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<style>
+/* ===========================
+   Variables y base
+   =========================== */
+:root {
+  --emi-header-height: 70px;
+  --emi-header-height-mobile: 60px;
+  --emi-guinda: #611232;
+  --emi-side-gap: 16px;
+}
+
+.global-header {
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.global-header .navbar {
+  min-height: var(--emi-header-height);
+  padding: 0.5rem 1rem;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  width: 100%;
+  margin: 0;
+}
+
+/* ===========================
+   Layout base (columna en móvil/tablet)
+   =========================== */
+.navbar .container-fluid {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: .5rem !important;
+  padding-left: var(--emi-side-gap) !important;
+  padding-right: var(--emi-side-gap) !important;
+}
+
+/* ===========================
+   Logos SIEMPRE en una línea y sin cortes
+   =========================== */
+.navbar-brand.brand-logos {
+  order: 1;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-wrap: nowrap !important;           /* no salta de línea */
+  white-space: nowrap !important;
+  gap: clamp(6px, 1.4vw, 14px) !important;
+  padding: 0;
+  margin: 0;
+  max-width: 100%;
+  min-width: 0;                           /* permite encoger sin romper */
+}
+
+.brand-logos .logo-img {
+  /* Escala fluida y más permisiva para evitar cortes */
+  height: clamp(22px, 5vw, 56px) !important;
+  width: auto !important;
+  max-width: 100% !important;
+  object-fit: contain !important;
+  flex: 0 1 auto;
+}
+
+.brand-logos .logo-separator {
+  width: 2px;
+  height: clamp(20px, 4.6vw, 52px) !important;
+  background: #AC8321;
+  display: inline-block;
+  border-radius: 1px;
+  flex: 0 0 auto;
+}
+
+/* El logo de texto puede ser el más ancho; limítalo para que no desborde */
+.brand-logos .logo-text {
+  max-width: min(48vw, 420px) !important;
+  height: auto !important;
+}
+
+/* En pantallas MUY estrechas, ocultamos el separador para ganar espacio */
+@media (max-width: 360px) {
+  .brand-logos .logo-separator { display: none !important; }
+}
+
+/* ===========================
+   Login
+   =========================== */
+.navbar-nav {
+  order: 2;
+  display: flex !important;
+  width: 100% !important;
+  justify-content: center !important;     /* CENTRADO cuando baja */
+  align-items: center !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  gap: .5rem;
+}
+
+/* En escritorio (cuando no baja), lo mandamos a la derecha */
+@media (min-width: 992px) {
+  .navbar-nav {
+    width: auto !important;
+    justify-content: flex-end !important;
+  }
+}
+
+.navbar-nav .btn {
+  border-radius: 20px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.navbar-nav .btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+.navbar-nav .btn:focus {
+  box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.5);
+}
+
+/* Botón login circular */
+.circulo {
+  background-color: #e6d194;
+  color: #333;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+.circulo:hover { transform: scale(1.05); }
+
+@media (max-width: 767.98px) {
+  .circulo { width: 50px; height: 50px; font-size: 12px; }
+}
+@media (max-width: 575.98px) {
+  .circulo { width: 44px; height: 44px; font-size: 11px; }
+}
+
+/* ===========================
+   Buscador (controlado para no invadir logos)
+   =========================== */
+.search-container {
+  order: 3;
+  width: 100%;
+  max-width: 560px;                       /* más razonable para desktop */
+  margin-left: auto;
+  margin-right: auto;                      /* centrado */
+  flex: 0 1 560px;
+}
+
+/* Input más contenido para que no “se vea enorme” */
+.search-input {
+  height: 40px;
+  padding: 0 .9rem;
+  line-height: 40px;
+  font-size: .95rem;
+
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  border-radius: 999px;
+}
+.search-input::placeholder { color: rgba(255, 255, 255, 0.7); }
+.search-input:focus {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  color: white;
+  box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
+}
+
+/* ====== Ocultar buscador en ≤ 991.98px para evitar solapes ====== */
+@media (max-width: 991.98px) {
+  .search-container { display: none !important; }
+}
+
+/* ===========================
+   Layout de escritorio (fila)
+   =========================== */
+@media (min-width: 992px) {
+  .navbar .container-fluid {
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 0.75rem !important;
+  }
+
+  /* Izquierda: logos ligeramente separados del borde */
+  .navbar-brand.brand-logos {
+    justify-content: flex-start !important;
+    margin-left: .25rem;
+  }
+
+  /* Centro: buscador crece pero con límites para no invadir logos */
+  .search-container {
+    order: 2;
+    flex: 1 1 520px;                       /* puede crecer, pero no infinito */
+    max-width: 680px;                      /* techo */
+    margin: 0 .75rem;
+  }
+
+  /* Derecha: login */
+  .navbar-nav { order: 3; }
+
+  .global-header .navbar { padding: 0.75rem 1.5rem; }
+}
+
+/* ===========================
+   Ajustes extra
+   =========================== */
+@media (max-width: 767.98px) {
+  .global-header .navbar {
+    min-height: var(--emi-header-height-mobile);
+    padding: 0.25rem 0.5rem;
+  }
+}
+
+/* Utilidad de color */
+.fondo_guinda { background-color: var(--emi-guinda) !important; }
+</style>

@@ -1,0 +1,148 @@
+<%namespace name='static' file='../static_content.html'/>
+<%page expression_filter="h"/>
+<%! from django.utils.translation import gettext as _ %>
+
+
+<%block name="headextra">
+<link rel="stylesheet" href="${static.url('css/access.css')}">
+</%block>
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta name="referrer" content="no-referrer">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login EMI</title>
+
+    <!-- Bootstrap e Iconos -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
+  <body class="fondo_crema">
+    <div id="emi-login-container" class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5 login-container">
+          <div class="logo-container">
+            <img src="${static.url("images/Logo_EMI_largo.png")}" alt="Logo EMI" class="img-fluid">
+          </div>
+          <h4 class="welcome-text">¡Bienvenido a tu portal de aprendizaje!</h4>
+
+          <div class="d-flex justify-content-center mb-4">
+            <button type="button" class="btn btn-guinda me-2" onclick="mostrarInicioSesion()">
+              <i class="bi bi-box-arrow-in-right me-2"></i>Iniciar Sesión
+            </button>
+            <button type="button" class="btn btn-outline-secondary" onclick="mostrarRegistro()">
+              <i class="bi bi-person-plus me-2"></i>Crear Cuenta
+            </button>
+          </div>
+
+          <div id="formularioLogin" style="display: none;">
+            <h5 class="text-center mb-4">Accede a tus cursos</h5>
+            <form onsubmit="loginUsuario(event)">
+              <div class="mb-3">
+                <div class="input-group">
+                  <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                  <input type="text" id="login_email" class="form-control" placeholder="Correo" required>
+                </div>
+              </div>
+              <div class="mb-3">
+                <div class="input-group">
+                  <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                  <input type="password" id="login_password" class="form-control" placeholder="Contraseña" required>
+                  <button class="btn btn-outline-secondary" type="button" onclick="togglePassword('login_password')">
+                    <i class="bi bi-eye" id="login_password_icon"></i>
+                  </button>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-guinda w-100">Entrar</button>
+              <div class="text-center mt-3">
+                <button type="button" class="btn btn-link text-muted text-decoration-none p-0" onclick="mostrarOlvideMiContrasena()">
+                  <i class="bi bi-key me-1"></i>¿Olvidaste tu contraseña?
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div id="formularioOlvideMiContrasena" style="display: none;">
+            <h5 class="text-center mb-4">Recuperar contraseña</h5>
+            <p class="text-center text-muted small mb-4">
+              Te enviaremos un enlace a tu correo electrónico para que puedas restablecer tu contraseña.
+            </p>
+            
+            <div id="password-reset-errors" style="display: none;" class="alert alert-danger"></div>
+            <div id="password-reset-success" style="display: none;" class="alert alert-success"></div>
+            
+            <form onsubmit="enviarRecuperacionContrasena(event)">
+              <div class="mb-3">
+                <div class="input-group">
+                  <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                  <input type="email" id="password_reset_email" class="form-control" placeholder="Tu correo electrónico" required>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-guinda w-100">Enviar enlace de recuperación</button>
+              <div class="text-center mt-3">
+                <button type="button" class="btn btn-link text-muted text-decoration-none p-0" onclick="mostrarInicioSesion()">
+                  <i class="bi bi-arrow-left me-1"></i>Volver al inicio de sesión
+                </button>
+              </div>
+            </form>
+            </form>
+          </div>
+
+          <div id="formularioRegistro">
+            <h5 class="text-center mb-4">Comienza tu viaje de aprendizaje</h5>
+            
+            <!-- Contenedor para errores generales -->
+            <div id="general-errors" style="display: none;"></div>
+            
+            <form id="registroForm" onsubmit="enviarRegistro(event)">
+              <div class="mb-3 input-group">
+                <span class="input-group-text"><i class="bi bi-person"></i></span>
+                <input type="text" class="form-control" id="name" placeholder="Nombre completo" required>
+              </div>
+              <div id="name-error" class="error-message" style="display: none;"></div>
+              
+              <div class="mb-3 input-group">
+                <span class="input-group-text"><i class="bi bi-person-badge"></i></span>
+                <input type="text" id="username" class="form-control" placeholder="Nombre de usuario público" required>
+              </div>
+              <div id="username-error" class="error-message" style="display: none;"></div>
+              
+              <div class="mb-3 input-group">
+                <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                <input type="email" class="form-control" id="email" placeholder="Email" required>
+              </div>
+              <div id="email-error" class="error-message" style="display: none;"></div>
+              
+              <div class="mb-3 input-group">
+                <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                <input type="password" class="form-control" id="password" placeholder="Contraseña" required>
+                <button class="btn btn-outline-secondary" type="button" onclick="togglePassword('password')">
+                  <i class="bi bi-eye" id="password_icon"></i>
+                </button>
+              </div>
+              <div id="password-error" class="error-message" style="display: none;"></div>
+              
+              <div class="mb-3 form-check">
+                <input class="form-check-input" type="checkbox" id="honor_code" required>
+                <label class="form-check-label" for="honor_code">Acepto el código de honor</label>
+              </div>
+              <div id="honor_code-error" class="error-message" style="display: none;"></div>
+              
+              <button type="submit" class="btn btn-guinda w-100">Registrarse</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="bg-white text-center py-4">
+      <p class="text-muted small mb-0">© 2025 Escuela Mexicana de Inglés. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="${static.url('js/access.js')}"></script>
+      </body>
+</html>

@@ -1,0 +1,82 @@
+//////////////////////
+// VARIABLES Y FUENTES EMI
+//////////////////////
+
+@import "partials/lms/theme/variables";
+@import "partials/lms/theme/fonts";
+
+//////////////////////
+// FUNCIONES Y MIXINS BOOTSTRAP
+//////////////////////
+
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins";
+
+//////////////////////
+// ESTILOS GENERALES DEL LMS
+//////////////////////
+
+// Certificados
+@import "certificates/certificate";
+
+// Courseware
+@import "courseware/about";
+@import "courseware/bookmarks";
+@import "courseware/discover";
+
+// Dashboard
+@import "dashboard/dashboard";
+
+// Extras
+@import "extra/header";
+@import "extra/footer";
+
+// Home page
+@import "home/home";
+
+// Programs
+@import "programs/programs";
+
+// XBlocks (si tienes personalizados)
+@import "xblock/xblock";
+
+//////////////////////
+// ESTILOS PERSONALIZADOS EMI
+//////////////////////
+
+// Fuente Montserrat de Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+// Colores principales EMI
+.fondo_guinda {
+  background-color: #5a122c !important;
+}
+
+.fondo_guinda_claro {
+  background-color: #8B2D4F !important;
+}
+
+.color_guinda {
+  color: #5a122c !important;
+}
+
+.color_guinda_claro {
+  color: #8B2D4F !important;
+}
+
+// Utilidades de círculo
+.circulo {
+  width: 30px;
+  height: 30px;
+  background-color: #e6d194;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 30px;
+  color: #611232;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@import "partials/lms/theme/extras";

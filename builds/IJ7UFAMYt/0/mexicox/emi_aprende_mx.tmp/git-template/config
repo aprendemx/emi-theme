@@ -1,0 +1,12 @@
+[init]
+	defaultBranch = none
+[fetch]
+	recurseSubmodules = false
+[credential]
+	interactive = never
+[gc]
+	autoDetach = false
+[transfer]
+	bundleURI = true
+[http "https://gitlab.com"]
+	sslCAInfo = /opt/tutor/env/build/openedx/themes/emi/builds/IJ7UFAMYt/0/mexicox/emi_aprende_mx.tmp/CI_SERVER_TLS_CA_FILE

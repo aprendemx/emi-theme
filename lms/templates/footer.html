@@ -1,0 +1,117 @@
+## mako
+<%page expression_filter="h"/>
+<%!
+  from datetime import datetime
+  from django.urls import reverse
+  from django.utils.translation import gettext as _
+  from lms.djangoapps.branding.api import get_footer
+  from openedx.core.djangoapps.lang_pref.api import footer_language_selector_is_enabled
+%>
+<% footer = get_footer(is_secure=is_secure) %>
+<% icp_license_info = getattr(settings, 'ICP_LICENSE_INFO', {})%>
+<%namespace name='static' file='static_content.html'/>
+<!-- NEW IN INDIGO update footer -->
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+<footer class="main-footer fondo_guinda text-light">
+      <div class="list-info">
+        <div class="container">
+          <div class="row py-3">
+            <div class="col-sm-3 mt-3">
+              <img data-v-9e928f9a="" src="https://framework-gb.cdn.gob.mx/gobmx/img/logo_blanco.svg" href="/" alt="logo gobierno de méxico" class="logo_footer" style="max-width: 90%;">
+            </div>
+            <div class="col-sm-3 mt-3" style="padding-left: 0px;">
+              <h5 class="text-light montserrat">Enlaces</h5>
+              <ul class="nav flex-column ">
+                <li class="nav-item"><a class="nav-link p-0 text-light montserrat" href="https://participa.gob.mx" target="_blank" rel="noopener" title="Enlace abre en ventana nueva">Participa</a></li>
+                <li class="nav-item"><a class="nav-link p-0 text-light montserrat" href="http://www.ordenjuridico.gob.mx" target="_blank" rel="noopener" title="Enlace abre en ventana nueva">Marco Jurídico</a></li>
+                <li class="nav-item"><a class="nav-link p-0 text-light montserrat" href="https://consultapublicamx.inai.org.mx/vut-web/" target="_blank" rel="noopener" title="Enlace abre en ventana nueva">Plataforma Nacional de Transparencia</a></li>
+                <li class="nav-item"><a class="nav-link p-0 text-light montserrat" href="https://alertadores.funcionpublica.gob.mx/" target="_blank" rel="noopener" title="Enlace abre en ventana nueva">Alerta</a></li>
+                <li class="nav-item"><a class="nav-link p-0 text-light montserrat" href="https://sidec.funcionpublica.gob.mx" target="_blank" rel="noopener" title="Enlace abre en ventana nueva">Denuncia</a></li>
+              </ul>
+            </div>
+            <div class="col-sm-3 mt-3">
+              <h5 class="text-light montserrat">¿Qué es gob.mx?</h5>
+              <p class="montserrat">Es el portal único de trámites, información y participación ciudadana.
+                <a class="nav-link p-0 text-light montserrat" href="https://www.gob.mx/que-es-gobmx">Leer más</a>
+              </p>
+              <ul class="nav flex-column ">
+                <li class="nav-item"><a class="nav-link p-0 text-light montserrat" href="https://datos.gob.mx">Portal de datos abiertos</a></li>
+                <li class="nav-item"><a class="nav-link p-0 text-light montserrat" href="https://www.gob.mx/accesibilidad">Declaración de accesibilidad</a></li>
+                <li class="nav-item"><a class="nav-link p-0 text-light montserrat" href="https://www.gob.mx/terminos">Términos y Condiciones</a></li>
+              </ul>
+            </div>
+            <div class="col-sm-3 mt-3" style="padding-left: 0px;">
+              <h5>
+                <a class="nav-link p-0 text-light montserrat" href="https://www.gob.mx/tramites/ficha/presentacion-de-quejas-y-denuncias-en-la-sfp/SFP54">Denuncia contra servidores públicos</a>
+              </h5>
+              <h5 class="text-light montserrat">Síguenos en</h5>
+              <ul class="list-inline">
+                <li>
+                  <a data-v-6b1f797a="" id="Facebook" href="https://www.facebook.com/gobmexico" target="_blank" rel="noopener" title="enlace a facebook abre en una nueva ventana" class="sendEst share-info footer">
+                    <img alt="Facebook" src="https://framework-gb.cdn.gob.mx/landing/img/facebook.png">
+                  </a>
+                </li>
+                <li style="margin-left: 5px; margin-right: 5px;">
+                  <a data-v-6b1f797a="" id="Twitter" href="https://twitter.com/GobiernoMX" target="_blank" rel="noopener" title="Enlace a twitter abre en una nueva ventana" class="sendEst share-info footer">
+                    <img alt="Twitter" src="https://framework-gb.cdn.gob.mx/landing/img/twitter.png">
+                  </a>
+                </li>
+                <li style="margin-left: 5px; margin-right: 5px;">
+                  <a data-v-6b1f797a="" id="Instagram" href="https://www.instagram.com/gobmexico/" target="_blank" rel="noopener" title="Enlace a instagram abre en una nueva ventana" class="sendEst share-info footer">
+                    <img alt="Instagram" src="https://framework-gb.cdn.gob.mx/landing/img/instagram.png">
+                  </a>
+                </li>
+                <li style="margin-left: 5px; margin-right: 5px;">
+                  <a data-v-6b1f797a="" id="Youtube" href="https://www.youtube.com/@gobiernodemexico" target="_blank" rel="noopener" title="Enlace a youtube abre en una nueva ventana" class="sendEst share-info footer">
+                    <img alt="Youtube" src="https://framework-gb.cdn.gob.mx/landing/img/youtube.png">
+                  </a>
+                </li>
+                <li>
+                  <div class="logo-079">
+                    <a href="tel:+079" target="_blank">                
+                      <img src=" https://framework-gb.cdn.gob.mx/gobmx/img/079.png" href="/" alt="logo 079" class="logo-079">
+                    </a>              
+                  </div>
+              </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+      <!-- Google tag (gtag.js) -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z97Y3FJQ9H"></script>
+      <script>
+          window.dataLayer = window.dataLayer || [];
+
+          function gtag() {
+              dataLayer.push(arguments);
+          }
+
+          gtag('js', new Date());
+
+          gtag('config', 'G-Z97Y3FJQ9H');
+      </script>
+
+% if include_dependencies:
+  <%static:js group='base_vendor'/>
+  <%static:css group='style-vendor'/>
+  <%include file="widgets/segment-io.html" />
+  <%include file="widgets/segment-io-footer.html" />
+% endif
+% if footer_css_urls:
+  % for url in footer_css_urls:
+    <link rel="stylesheet" type="text/css" href="${url}"></link>
+  % endfor
+% endif
+<script>
+	let $= jQuery;
+</script>
+<!-- <script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>
+<link href="https://framework-gb.cdn.gob.mx/assets/styles/main.css" rel="stylesheet"> -->

@@ -1,0 +1,23 @@
+## mako
+
+<%page expression_filter="h"/>
+
+<%namespace name='static' file='/static_content.html'/>
+<%!
+from django.urls import reverse
+from django.utils.translation import gettext as _
+from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
+%>
+
+<h1 class="hd logo-header navbar-brand">
+  <div class="logo">
+    <a class="navbar-brand" href="/">
+      <img class="logo-image" src="${static.url("images/logo_emi.png")}" alt="EMI">
+    </a>
+  </div>
+  <div class="logo">
+    <a class="navbar-brand" href="http://aprende.gob.mx/">
+      <img class="logo-image" src="${static.url("images/logo.amx.png")}" alt="Gobierno de México">
+    </a>
+  </div>
+</h1>
