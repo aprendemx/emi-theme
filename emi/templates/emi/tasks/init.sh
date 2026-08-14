@@ -1,17 +1,20 @@
-# Assign themes only if no other theme exists yet
-./manage.py lms shell -c "
-import sys
-from django.contrib.sites.models import Site
-def assign_theme(domain):
-    site, _ = Site.objects.get_or_create(domain=domain)
-    if not site.themes.exists():
-        site.themes.create(theme_dir_name='emi')
 
-assign_theme('{{ LMS_HOST }}')
-assign_theme('{{ LMS_HOST }}')
-assign_theme('{{ LMS_HOST }}:8000')
-assign_theme('{{ CMS_HOST }}')
-assign_theme('{{ CMS_HOST }}:8001')
-assign_theme('{{ PREVIEW_LMS_HOST }}')
-assign_theme('{{ PREVIEW_LMS_HOST }}:8000')
+set -euo pipefail
+
+
+python3 manage.py lms shell --command "
+from django.contrib.sites.models import Site
+from django_themes.models import Theme, SiteTheme
+
+theme = Theme.objects.get(name='emi')
+for domain in (
+    '{{ LMS_HOST }}',
+    '{{ LMS_HOST }}:8000',
+    '{{ CMS_HOST }}',
+    '{{ CMS_HOST }}:8001',
+    '{{ PREVIEW_LMS_HOST }}',
+    '{{ PREVIEW_LMS_HOST }}:8000',
+):
+    site, _ = Site.objects.get_or_create(domain=domain)
+    SiteTheme.objects.update_or_create(site=site, defaults={'theme': theme})
 "
