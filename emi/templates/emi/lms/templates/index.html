@@ -1,226 +1,291 @@
 <%page expression_filter="h"/>
 <%inherit file="main.html" />
 <%namespace name='static' file='static_content.html'/>
-
+<%block name="headextra">
+    <link rel="stylesheet" type="text/css" href="${static.url('css/index.css')}" />
+</%block>
 <%!
 from django.utils.translation import gettext as _
 from django.urls import reverse
 %>
-
-<main id="main" aria-label="Content" tabindex="-1" class="montserrat">
+<div id="main" aria-label="Content" tabindex="-1" class="montserrat">
     <div class="container-fluid">
-
-        <!-- Imagen fondo inicial -->
-        <div class="row mb-5">
-            <div class="col-md-12">
-                <img src="${static.url("images/imagen_prin.png")}" alt="Escuela Mexicana de Inglés" class="img_principal" style="width: 100%; height: auto;">
-            </div>
-        </div>
-
-        <!-- Div titulo cursos -->
-        <div class="row mb-3">
-            <div class="col-md-3 text-center ms-3">
-                <h4 class="color_guinda titulos" style="border: 2px solid #89111d; padding: 5px 10px; border-radius: 20px;">Recommended Courses</h4>
-            </div>
-        </div>
-
-        <!-- Tarjetas de cursos -->
-        <div class="row row-cols-1 row-cols-md-4 g-4 mb-5">
-            <%include file="${courses_list}" />
-        </div>
-
-        <!-- Div titulo Resources -->
-        <div class="row mb-3">
-            <div class="col-md-3 text-center ms-3">
-                <h4 class="color_verde_oscuro titulos">Resources. <span style="font-weight:500">Have fun!</span></h4>
-            </div>
-        </div>
-
-        <!-- Carrusel de videos -->
-        <div class="row">
-            <div class="col-md-12 fondo_verde_oscuro mt-5">
-                <!-- Select -->
-                <div class="row mt-5 mlef">
-                    <div class="col-md-2">
-                        <select class="form-select select_nivel" aria-label="Default select example">
-                            <option selected>Level A1</option>
-                            <option value="1">Level B1</option>
-                            <option value="2">Level C1</option>
-                        </select>
+        <div class="row mb-0">
+            <div class="col-md-12"> 
+                <!-- Banner Principal -->
+                <section class="hero-banner">
+                    <div class="hero-inner">
+                        <div class="hero-left">
+                            <div class="hero-text">
+                                <h1 class="hero-title">WELCOME TO EMI!</h1>
+                                <p id="parrafo1">
+                                    <span id="parrafo1-txt" data-lang="es">
+                                        En EMI sabemos que cada persona aprende a su propio ritmo. 
+                                        Por eso, esta <strong>plataforma gratuita y oficial</strong> de la 
+                                        <strong>Secretaría de Educación Pública</strong> está pensada para que refuerces, repases y practiques tu inglés 
+                                        <strong>donde quieras y cuando quieras</strong>, con recursos que se adaptan a ti.
+                                    </span>
+                                    <button type="button" class="btn-emi ms-2" onclick="toggleTranslation('parrafo1')"><strong>ESP/ENG</strong></button>
+                                </p>
+                            <p class="hero-cta"><a href="/login" class="btn-emi" role="button" style="background: #5B112C !important;"><strong>Comienza aquí</strong></a></p>
+                            </div>
+                        </div>
+                        <div class="hero-center">
+                            <img src="${static.url('images/Logo_full.png')}" alt="Logo EMI" loading="lazy">
+                        </div>
                     </div>
-                    <div class="col-md-10">
+                </section>
+            </div>
+        </div>
+
+        <!-- 3 iconos -->
+        <div class="row">
+            <div class="col-md-12" style="margin-top: 2rem !important; margin-bottom: 1rem !important;">
+                <div class="row mb-5 mt-5">
+
+                <div class="col-md-4 text-center">
+                    <div class="icon-feature">
+                    <div class="feature-canvas" style="--hover-rot:-6deg">
+                        <img src="https://aprende.gob.mx/images/emi/home/Disponible_en_todo_momento_fondo.webp"  class="feature-bg" alt="" aria-hidden="true">
+                        <img src="https://aprende.gob.mx/images/emi/home/Disponible_en_todo_momento.webp" class="feature-fg" alt="Disponible en todo momento">
+                    </div>
+                    <p class="feature-title"><span id="icon1-title" data-lang="es"><strong style="font-size: 20px !important;">Disponible en todo momento</strong></span></p>
                     </div>
                 </div>
-                <!-- Fin select -->
-                <!-- Videos -->
-                <div class="container-fluid text-center my-3 mb-5">
-                    <div class="row">
-                        <div class="row mx-auto my-auto justify-content-center">
-                            <div id="recipeCarousel" class="carousel carousel-dark slide" data-bs-touch="false"
-                                 data-bs-interval="false" data-bs-wrap="false">
-                                <div class="carousel-inner" role="listbox">
-                                    <div class="carousel-item active">
-                                        <div class="col-md-12">
-                                            <div class="card bg-dark text-white">
-                                                <img class="card-img" src="img/videos.jpg" alt="Card image">
-                                                <div class="card-img-overlay">
-                                                    <div style="margin-top: 30%;">
-                                                        <i class="bi bi-play-circle icon_video"></i>
-                                                    </div>
-                                                    <h5 class="card-title text-start fw-bold mt-2"> Titulo
-                                                        contenido </h5>
-                                                    <p class="card-text text-start mb-0">British Council</p>
-                                                    <p class="card-text text-start">Podcast</p>
-                                                    <p class="card-text text-start mt-5">LEVEL A1</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <div class="col-md-12">
-                                            <div class="card bg-dark text-white">
-                                                <img class="card-img" src="img/imagen3.jpg" alt="Card image">
-                                                <div class="card-img-overlay">
-                                                    <div style="margin-top: 30%;">
-                                                        <i class="bi bi-play-circle icon_video"></i>
-                                                    </div>
-                                                    <h5 class="card-title text-start fw-bold mt-2"> Titulo
-                                                        contenido </h5>
-                                                    <p class="card-text text-start mb-0">SEP</p>
-                                                    <p class="card-text text-start">Book</p>
-                                                    <p class="card-text text-start mt-5">LEVEL A1</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <div class="col-md-12">
-                                            <div class="card bg-dark text-white">
-                                                <img class="card-img" src="img/imagen2.jpg" alt="Card image">
-                                                <div class="card-img-overlay">
-                                                    <div style="margin-top: 30%;">
-                                                        <i class="bi bi-play-circle icon_video"></i>
-                                                    </div>
-                                                    <h5 class="card-title text-start fw-bold mt-2"> Titulo
-                                                        contenido </h5>
-                                                    <p class="card-text text-start mb-0">SEP</p>
-                                                    <p class="card-text text-start">Book</p>
-                                                    <p class="card-text text-start mt-5">LEVEL A1</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <div class="col-md-12">
-                                            <div class="card bg-dark text-white">
-                                                <img class="card-img" src="img/imagen4.jpg" alt="Card image">
-                                                <div class="card-img-overlay">
-                                                    <div style="margin-top: 30%;">
-                                                        <i class="bi bi-play-circle icon_video"></i>
-                                                    </div>
-                                                    <h5 class="card-title text-start fw-bold mt-2"> Titulo
-                                                        contenido </h5>
-                                                    <p class="card-text text-start mb-0">@aprende.mx</p>
-                                                    <p class="card-text text-start">TV Show</p>
-                                                    <p class="card-text text-start mt-5">LEVEL A1</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
 
+                <div class="col-md-4 text-center">
+                    <div class="icon-feature">
+                    <div class="feature-canvas" style="--hover-rot:5deg">
+                        <img src="https://aprende.gob.mx/images/emi/home/publica_y_gratuita_fondo.webp"  class="feature-bg" alt="" aria-hidden="true">
+                        <img src="https://aprende.gob.mx/images/emi/home/publica_y_gratuita.webp" class="feature-fg" alt="Pública y gratuita">
+                    </div>
+                    <p class="feature-title"><span id="icon2-title" data-lang="es"><strong  style="font-size: 20px !important;">Pública y gratuita</strong></span></p>
+                    </div>
+                </div>
+
+                <div class="col-md-4 text-center">
+                    <div class="icon-feature">
+                    <div class="feature-canvas" style="--hover-rot:-4deg">
+                        <img src="https://aprende.gob.mx/images/emi/home/basada_en_autoaprendizaje_fondo.webp"  class="feature-bg" alt="" aria-hidden="true">
+                        <img src="https://aprende.gob.mx/images/emi/home/basada_en_autoaprendizaje.webp" class="feature-fg" alt="Basada en autoaprendizaje">
+                    </div>
+                    <p class="feature-title"><span id="icon3-title" data-lang="es"><strong style="font-size: 20px !important;">Basada en autoaprendizaje</strong></span></p>
+                    </div>
+                </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Titulo cursos -->
+        <div class="row mb-3 desktop-margin-4rem" style="margin-top: 3rem !important; margin-bottom: 3rem !important; margin-left: 4rem; margin-right: 4rem;">
+            <div class="col-12">
+                <div class="welcome-section">
+                    <div class="welcome-row">
+                            <h1 style="color: #9b2247;">Cursos</h1>
+                            <span class="title-separator"></span>
+                        <div class="welcome-text">
+                            <p ><span id="cursos_h2-txt" data-lang="es"><strong>Encuentra el curso perfecto para tu nivel</strong></span></p>
+                            <p id="cursos_parrafo">
+                                <span id="cursos_parrafo-txt" data-lang="es">
+                                    Cada etapa es una oportunidad: refuerza lo que ya sabes, enfrenta nuevos retos y avanza con confianza en tu inglés.
+                                </span>
+                                <button type="button" class="btn-emi ms-2" onclick="toggleTranslation('cursos_parrafo')"><strong>ESP/ENG</strong></button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <style>
+            .enlaces-titulo-wrapper {
+                margin-left: 6rem !important;
+            }
+            @media (max-width: 767.98px) {
+                .enlaces-titulo-wrapper {
+                    margin-left: 0 !important;
+                    text-align: center !important;
+                }
+                .desktop-margin-4rem {
+                    margin-left: 0 !important;
+                    margin-right: 0 !important;
+                }
+                .row.desktop-margin-4rem {
+                    margin-left: 0 !important;
+                    margin-right: 0 !important;
+                }
+                .row[style*="margin-left: 4rem"].desktop-margin-4rem {
+                    margin-left: 0 !important;
+                    margin-right: 0 !important;
+                }
+                .row.educational-banners[style*="margin-left: 4rem"].desktop-margin-4rem {
+                    margin-left: 0 !important;
+                    margin-right: 0 !important;
+                }
+            }
+        </style>
+
+
+        <!-- Cursos - 5 tarjetas por fila -->
+        <div class="course-holder courses${'' if course_discovery_enabled else ' no-course-discovery'}" role="region" aria-label="${_('List of Courses')}" style="margin-left: 4rem; margin-right: 4rem; margin-bottom: 4rem;">
+            <div class="row">
+                %for course in courses:
+                    <%include file="course.html" args="course=course" />
+                %endfor
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 fondo_verde_oscuro mt-5" style="margin-top: 1rem !important;">
+                <div class="row mb-3" style="margin-bottom: 0rem!important;">
+                    <div class="col-12" style="background: #EDD899;">
+                        <div class="welcome-section recursos-section">
+                            <div class="welcome-row recursos-row" id="parrafo2_main">
+                                <!-- Título Recursos a la derecha -->
+                                <span class="recursos-separator"></span>
+                                <div class="recursos-title">
+                                    <h1>Recursos</h1>
                                 </div>
-                                <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel"
-                                   role="button" data-bs-slide="prev">
-                                    <i class="bi bi-chevron-left icon_prev"></i>
-                                </a>
-                                <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel"
-                                   role="button" data-bs-slide="next">
-                                    <i class="bi bi-chevron-right icon_prev"></i>
-                                </a>
+                                
+                                <!-- Descripción centrada -->
+                                <div class="recursos-description">
+                                    <span id="parrafo2-main-txt" data-lang="es">
+                                        Aquí encontrarás <strong>Recursos Educativos Digitales (RED)</strong><br>
+                                        diseñados para impulsar tu aprendizaje.
+                                    </span>
+                                </div>
+                                <!-- Download banner -->
+                                <div id="parrafo_download" class="welcome-image text-center d-flex justify-content-center align-items-center flex-nowrap" role="region" aria-label="Descargas banner">
+                                    <p class="banner-download mb-0">
+                                        <span id="parrafo_download-txt" data-lang="es" style="color: #000;">
+                                            <i>Descárgalos, compártelos y consúltalos cuando quieras… ¡las veces que necesites!</i>
+                                        </span>
+                                    </p>
+                                </div>
+                                <!-- Botón ESP/ENG de recursos en la parte inferior derecha -->
+                                <div class="recursos-esp-eng-btn">
+                                    <button type="button" class="btn-emi" onclick="toggleTranslation('parrafo2')"><strong>ESP/ENG</strong></button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- Fin de videos -->
+
+                <div id="loadingIndicator" style="display: none;">
+                    <div class="row">
+                        <div class="col-md-12 text-center text-white">
+                            <div class="spinner-border text-light" role="status">
+                                <span class="visually-hidden">Cargando...</span>
+                            </div>
+                            <p class="mt-2">Cargando recursos desde SEP...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="dynamicCarousel" class="container-fluid text-center my-3 mb-5">
+                    <div class="row">
+                        <div class="col-md-12 text-white">
+                            <div class="spinner-border text-light" role="status">
+                                <span class="visually-hidden">Cargando...</span>
+                            </div>
+                            <p class="mt-2">Cargando niveles desde SEP...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- Redes sociales -->
+        <div class="row social-strip">
+            <div class="col-12" style="background-color: #1e5b4f;">
+                <div class="container py-2 d-flex justify-content-center align-items-center gap-3">
+                    <span id="parrafo3" class="text-white fw-semibold me-2 d-flex align-items-center">
+                        <span id="parrafo3-txt" data-lang="es">Aprende y pásala cool en nuestras redes. Síguenos y continúa practicando tu inglés.</span>
+                        <button type="button" class="btn-emi ms-2" onclick="toggleTranslation('parrafo3')"><strong>ESP/ENG</strong></button>
+                    </span>
+                    <div class="d-flex align-items-center">
+                        <a href="https://x.com/emi_freeforall" target="_blank" rel="noopener" class="social-btn" aria-label="X - EMI Free For All" title="X">
+                            <i class="bi bi-twitter-x"></i>
+                        </a>
+                        <a href="https://www.facebook.com/profile.php?id=61575260330269" target="_blank" rel="noopener" class="social-btn" aria-label="Facebook - EMI Free For All" title="Facebook">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                        <a href="https://www.instagram.com/emi_freeforall/" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram - EMI Free For All" title="Instagram">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@emi_freeforall" target="_blank" rel="noopener" class="social-btn" aria-label="TikTok - EMI Free For All" title="TikTok">
+                            <i class="bi bi-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- Enlaces de interés -->
+    <div class="row">
+        <div class="col-md-12 fondo_crema">
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <div class="row mt-5" style="margin-bottom: 3rem !important;">
+                        <div class="col-md-3 text-center ms-3 enlaces-titulo-wrapper">
+                            <h1 style="color: #000;">Enlaces de interés</h1>
+                        </div>
+                    </div>
+                    <div class="row mt-4 mb-5 educational-banners desktop-margin-4rem" style="margin-left: 2.5rem; margin-right: 4rem;">
+                        <div class="col-md-3 text-center">
+                            <a href="https://www.gob.mx/sep" target="_blank" rel="noopener" class="d-block">
+                                <img src="${static.url('images/banners4.jpg')}" alt="SEP" class="img-fluid">
+                            </a>
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <a href="https://cursos.aprende.gob.mx" target="_blank" rel="noopener" class="d-block">
+                                <img src="${static.url('images/banners1.jpg')}" alt="Cursos Aprende" class="img-fluid">
+                            </a>
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <a href="https://aprende.gob.mx" target="_blank" rel="noopener" class="d-block">
+                                <img src="${static.url('images/banners3.jpg')}" alt="Nueva Escuela Mexicana" class="img-fluid">
+                            </a>
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <a href="https://englishonline.britishcouncil.org/es/" target="_blank" rel="noopener" class="d-block">
+                                <img src="https://aprende.gob.mx/images/emi/home/banners_promos_varios-british.webp" alt="British" class="img-fluid">
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
-
-        <!-- Tarjetas de recursos -->
-        <div class="row row-cols-1 row-cols-md-6 g-4 mb-5">
-            % for i, title in enumerate(['Books', 'Comics', 'Music', 'Podcast', 'Challenges', 'Forums'], start=1):
-            <div class="col mb-3">
-                <div class="card h-100 fondo_card">
-                    <img src="${static.url("images/rc_${i}.png")}" class="card-img-top" style="height: 120px; object-fit: contain;">
-                    <div class="card-body bg-light text-center">
-                        <h5 class="card-title">${title}</h5>
-                    </div>
-                </div>
-            </div>
-            % endfor
-        </div>
-
-        <!-- Div titulo My classroom -->
-        <div class="row fondo_guinda">
-            <div class="col-md-3 text-center ms-3">
-                <h4 class="text-light titulos">My classroom</h4>
-            </div>
-        </div>
-
-        <!-- Tarjetas My classroom -->
-        <div class="row row-cols-1 row-cols-md-3 g-4 mb-5 fondo_guinda">
-            <div class="col">
-                <div class="card h-100 fondo_card">
-                    <img src="${static.url("images/curso1.png")}" class="card-img-top">
-                    <div class="card-body">
-                        <h4 class="card-title color_guinda fw-bold">The next step</h4>
-                        <h6 class="card-title color_guinda">Description</h6>
-                        <p class="card-text color_guinda">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <div class="progress mb-2">
-                            <div class="progress-bar" role="progressbar" style="width: 10%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+    
+    <!-- Nueva sección con botones y logo footerEMI -->
+    <div class="row">
+        <div class="col-md-12 footerEMI-section">
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <!-- Botones superiores -->
+                    <div class="row mt-5 mb-4">
+                        <div class="col-12 text-center">
+                            <div class="footerEMI-buttons">
+                                <a href="/honor " class="footerEMI-btn">Código de honor</a>
+                                <a href="/privacy" class="footerEMI-btn">Aviso de privacidad</a>
+                                <a href="/faq" class="footerEMI-btn">Preguntas frecuentes</a>
+                                <a href="/news" class="footerEMI-btn">Soporte</a>
+                            </div>
                         </div>
                     </div>
-                    <div class="card-footer text-center">
-                        <a href="#" class="btn btn_join fondo_amarillo text-white">Join now</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col">
-                <div class="card h-100 fondo_card">
-                    <img src="${static.url("images/curso2.png")}" class="card-img-top">
-                    <div class="card-body">
-                        <h4 class="card-title color_guinda fw-bold">Grammar & Grandma</h4>
-                        <h6 class="card-title color_guinda">Description</h6>
-                        <p class="card-text color_guinda">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <div class="progress mb-2">
-                            <div class="progress-bar" role="progressbar" style="width: 70%;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="row mb-3">
+                        <div class="col-12 text-center">
+                            <div class="footerEMI-logo">
+                                <img src="https://sisadmin.mexicox.gob.mx/extramexicox/eduaprende.jpg" alt="EduAprende" class="img-fluid">
+                            </div>
                         </div>
                     </div>
-                    <div class="card-footer text-center">
-                        <a href="#" class="btn btn_join fondo_amarillo text-white">Join now</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col">
-                <div class="card h-100 fondo_card">
-                    <img src="${static.url("images/curso3.png")}" class="card-img-top">
-                    <div class="card-body">
-                        <h4 class="card-title color_guinda fw-bold">Spelling</h4>
-                        <h6 class="card-title color_guinda">Description</h6>
-                        <p class="card-text color_guinda">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <div class="progress mb-2">
-                            <div class="progress-bar" role="progressbar" style="width: 70%;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="row mb-5">
+                        <div class="col-12 text-center">
+                            <p class="footerEMI-copyright">©2025. Todos los derechos reservados.</p>
                         </div>
-                    </div>
-                    <div class="card-footer text-center">
-                        <a href="#" class="btn btn_join fondo_amarillo text-white">Join now</a>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
-</main>
+</div>
+<script src="${static.url('js/index.js')}" defer></script>

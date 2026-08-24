@@ -5,3 +5,11 @@ __pycache__
 *.egg-info/
 /build/
 /dist/
+
+# Salida generada por Tutor cuando el repo vivía dentro de env/build/openedx/themes
+/lms/
+/cms/
+/tasks/
+/builds/
+*.egg-info/
+__pycache__/

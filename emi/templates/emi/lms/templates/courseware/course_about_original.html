@@ -1,0 +1,200 @@
+<%page expression_filter="h"/>
+<%namespace name='static' file='../static_content.html'/>
+<%!
+from django.utils.translation import gettext as _
+from django.utils.translation import pgettext
+from django.urls import reverse
+from lms.djangoapps.courseware.courses import get_course_about_section
+from django.conf import settings
+from common.djangoapps.edxmako.shortcuts import marketing_link
+from openedx.core.djangolib.js_utils import js_escaped_string
+from openedx.core.djangolib.markup import clean_dangerous_html, HTML, Text
+from openedx.core.lib.courses import course_image_url
+%>
+
+<%inherit file="../main.html" />
+<%block name="headextra">
+  <meta property="og:title" content="${course.display_name_with_default}" />
+  <meta property="og:description" content="${get_course_about_section(request, course, 'short_description')}" />
+</%block>
+
+<%block name="js_extra">
+  <script type="text/javascript">
+  (function() {
+    $(".register").click(function(event) {
+      $("#class_enroll_form").submit();
+      event.preventDefault();
+    });
+
+    $('#class_enroll_form').on('ajax:complete', function(event, xhr) {
+      if (xhr.status == 200) {
+        if (xhr.responseText == "") {
+          location.href = "${reverse('dashboard') | n, js_escaped_string}";
+        }
+        else {
+          location.href = xhr.responseText;
+        }
+      } else if (xhr.status == 403) {
+        location.replace("${reverse('signin_user') | n, js_escaped_string}?next=" + encodeURIComponent("${request.path | n, js_escaped_string}"));
+      } else {
+        $('#register_error').text(
+            (xhr.responseText ? xhr.responseText : "${_("An error occurred. Please try again later.") | n, js_escaped_string}")
+        ).css("display", "block");
+      }
+    });
+
+  })(this)
+  </script>
+
+  <script src="${static.url('js/course_info.js')}"></script>
+</%block>
+
+<%block name="pagetitle">${course.display_name_with_default}</%block>
+
+<section class="course-info about container">
+
+  <%block name="course_about_header">
+  <header>
+    <div class="row mb-5">
+      <div class="col-md-12">
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner course_car">
+            <div class="carousel-item course active">
+              % if get_course_about_section(request, course, "video"):
+              <a href="#video-modal" class="media" rel="leanModal">
+                <img src="${course_image_urls['large']}" class="d-block w-100 desenfocar" alt="${course.display_name_with_default}">
+              </a>
+              % else:
+              <img src="${course_image_urls['large']}" class="d-block w-100 desenfocar" alt="${course.display_name_with_default}">
+              % endif
+              <div>
+                <div class="row mt-5">
+                  <div class="col-md-6">
+                    <h1>${course.display_name_with_default}</h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  </%block>
+  
+  <div class="row">
+       <div class="col-md-1">
+        <div class="circulo_amarillo_Osc ms-3 montserrat"><a class="nav-link text-light fw-bold" href="#">U1</a></div>
+      </div>
+      <div class="col-md-11">
+        <h3 class="color_amarillo fw-bold mt-3 ps-4 montserrat">${course.display_name_with_default}</h3>
+     </div>
+     <hr class="mt-3">
+</div> 
+
+<!-- Enrollment Section -->
+<div class="row">
+  <div class="col-md-12">
+    <div class="enrollment-section text-center mb-4">
+      %if user.is_authenticated and registered:
+        %if show_courseware_link:
+          <a href="${course_target}" class="btn fondo_amarillo text-white montserrat fw-bold px-4 py-2">
+            Ver Curso
+          </a>
+        %else:
+          <span class="btn btn-secondary disabled montserrat">Ya Inscrito</span>
+        %endif
+
+      % elif is_course_full:
+        <span class="btn btn-secondary disabled montserrat">Curso Lleno</span>
+      % elif invitation_only and not can_enroll:
+        <span class="btn btn-secondary disabled montserrat">Solo por Invitación</span>
+      % elif not is_shib_course and not can_enroll:
+        <span class="btn btn-secondary disabled montserrat">Inscripción Cerrada</span>
+      %elif allow_anonymous:
+        %if show_courseware_link:
+          <a href="${course_target}" class="btn fondo_amarillo text-white montserrat fw-bold px-4 py-2">
+            Ver Curso
+          </a>
+        %endif
+      %else:
+        <%
+          if ecommerce_checkout:
+            reg_href = ecommerce_checkout_link
+          else:
+            reg_href="#"
+          if single_paid_mode:
+            href_class = "add-to-cart"
+          else:
+            href_class = "register"
+        %>
+        <a href="${reg_href}" class="${href_class} btn fondo_amarillo text-white montserrat fw-bold px-4 py-2">
+          Inscribirse hora
+        </a>
+        <div id="register_error" class="text-danger mt-2" style="display: none;"></div>
+      %endif
+    </div>
+  </div>
+</div>
+
+<div class="about-content">
+  <%block name="course_about_details">
+  <div class="details">
+    <div class="col-md-12 ps-4 pe-4  montserrat">
+      <h3 class="color_guinda mb-3 montserrat">INTRO</h3>
+      <p class="montserrat">${clean_dangerous_html(get_course_about_section(request, course, "short_description"))}</p>
+    </div>
+    % if staff_access and studio_url is not None:
+      <div class="wrap-instructor-info studio-view">
+        <a class="instructor-info-action montserrat" href="${studio_url}">${_("View About Page in studio")}</a>
+      </div>
+    % endif
+
+    <div class="inner-wrapper montserrat">
+      ${clean_dangerous_html(get_course_about_section(request, course, "overview"))}
+    </div>
+  </div>
+  </%block>
+
+  % if get_course_about_section(request, course, "ocw_links"):
+  <div class="additional-resources">
+    <header>
+      <h1 class="montserrat">${_("Additional Resources")}</h1>
+    </header>
+    <div>
+      <h2 class="opencourseware montserrat">MITOpenCourseware</h2>
+      ${get_course_about_section(request, course, "ocw_links")}
+    </div>
+  </div>
+  % endif
+
+  % if sidebar_html_enabled:
+    % if get_course_about_section(request, course, "about_sidebar_html"):
+      <section class="about-sidebar-html">
+        ${get_course_about_section(request, course, "about_sidebar_html")}
+      </section>
+    % endif
+  % endif
+</div>
+</section>
+
+% if active_reg_button or is_shib_course:
+  <div style="display: none;">
+    <form id="class_enroll_form" method="post" data-remote="true" action="${reverse('change_enrollment')}">
+      <fieldset class="enroll_fieldset">
+        <legend class="sr">${pgettext("self","Enroll")}</legend>
+        <input name="course_id" type="hidden" value="${course.id}">
+        <input name="enrollment_action" type="hidden" value="enroll">
+      </fieldset>
+      <div class="submit">
+        <input name="submit" type="submit" value="${pgettext('self','enroll')}">
+      </div>
+    </form>
+  </div>
+% endif
+
+<%include file="../video_modal.html" />
+
+<%static:require_module_async module_name="js/dateutil_factory" class_name="DateUtilFactory">
+    DateUtilFactory.transform(iterationKey=".localized_datetime");
+</%static:require_module_async>
