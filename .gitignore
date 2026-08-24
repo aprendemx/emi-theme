@@ -13,3 +13,4 @@ __pycache__
 /builds/
 *.egg-info/
 __pycache__/
+env.config.jsx
