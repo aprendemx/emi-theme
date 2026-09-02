@@ -57,15 +57,9 @@ hooks.Filters.ENV_PATTERNS_INCLUDE.add_items([
     r"emi/cms/static/sass/partials/cms/theme/",
 ])
 
-# init tasks script
-with open(
-    os.path.join(
-        str(importlib_resources.files("emi") / "templates"),
-        "emi", "tasks", "init.sh",
-    ),
-    encoding="utf-8",
-) as task_file:
-    hooks.Filters.CLI_DO_INIT_TASKS.add_item(("lms", task_file.read()))
+# La tarea de init del tema se retiro: importaba django_themes.models
+# (inexistente) y usaba pipefail con dash. Su funcion la cubre
+# `tutor local do settheme emi`.
 
 # ------------------------------------------------------------------------------
 # Override Docker image names
