@@ -50,7 +50,6 @@ hooks.Filters.ENV_TEMPLATE_ROOTS.add_item(
 )
 hooks.Filters.ENV_TEMPLATE_TARGETS.add_items([
     ("emi", "build/openedx/themes"),
-    ("emi/env.config.jsx", "plugins/mfe/build/mfe"),
 ])
 hooks.Filters.ENV_PATTERNS_INCLUDE.add_items([
     r"emi/lms/static/sass/partials/lms/theme/",
@@ -97,32 +96,6 @@ hooks.Filters.CONFIG_OVERRIDES.add_items(
 # ------------------------------------------------------------------------------
 # NPM patches for Indigo branding
 # ------------------------------------------------------------------------------
-indigo_styled_mfes = [
-    "learning",
-    "learner-dashboard",
-    "profile",
-    "account",
-    "discussions",
-]
-
-for mfe in indigo_styled_mfes:
-    hooks.Filters.ENV_PATCHES.add_item(
-        (
-            f"mfe-dockerfile-post-npm-install-{mfe}",
-            """
-RUN npm install @edly-io/indigo-frontend-component-footer@^3.0.0
-RUN npm install '@edx/frontend-component-header@npm:@edly-io/indigo-frontend-component-header@^4.0.0'
-RUN npm install '@edx/brand@npm:@edly-io/indigo-brand-openedx@^2.2.2'
-""",
-        ),
-    )
-
-hooks.Filters.ENV_PATCHES.add_item(
-    (
-        "mfe-dockerfile-post-npm-install-authn",
-        "RUN npm install '@edx/brand@npm:@edly-io/indigo-brand-openedx@^2.2.2'",
-    )
-)
 # ------------------------------------------------------------------------------
 # Inyectar colores y componentes en TODOS los MFEs
 # ------------------------------------------------------------------------------
@@ -130,9 +103,6 @@ hooks.Filters.ENV_PATCHES.add_item(
     (
         "mfe-env-config-runtime-definitions",
         f"""
-// --- Componente Footer Indigo ---
-const {{ default: IndigoFooter }} = await import('@edly-io/indigo-frontend-component-footer');
-
 // --- Colores personalizados EMI (todos los MFEs) ---
 MFE_CONFIG['PRIMARY_COLOR']   = '{config['defaults']['PRIMARY_COLOR']}';
 MFE_CONFIG['SECONDARY_COLOR'] = '{config['defaults']['ACCENT_COLOR']}';
@@ -189,37 +159,3 @@ MFE_CONFIG['INDIGO_ENABLE_DARK_TOGGLE'] = {{ INDIGO_ENABLE_DARK_TOGGLE }}
 #     with open(path, encoding="utf-8") as patch_file:
 #         hooks.Filters.ENV_PATCHES.add_item((os.path.basename(path), patch_file.read()))
 
-# ------------------------------------------------------------------------------
-# Footer slot widgets (optional)
-# ------------------------------------------------------------------------------
-for mfe in indigo_styled_mfes:
-    PLUGIN_SLOTS.add_item(
-        (
-            mfe,
-            "footer_slot",
-            """
-            {
-                op: PLUGIN_OPERATIONS.Hide,
-                widgetId: 'default_contents',
-            },
-            {
-                op: PLUGIN_OPERATIONS.Insert,
-                widget: {
-                    id: 'default_contents',
-                    type: DIRECT_PLUGIN,
-                    priority: 1,
-                    RenderWidget: <IndigoFooter />,
-                },
-            },
-            {
-                op: PLUGIN_OPERATIONS.Insert,
-                widget: {
-                    id: 'read_theme_cookie',
-                    type: DIRECT_PLUGIN,
-                    priority: 2,
-                    RenderWidget: AddDarkTheme,
-                },
-            },
-            """
-        ),
-    )
