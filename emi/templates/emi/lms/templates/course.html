@@ -8,16 +8,26 @@ from django.urls import reverse
 
 <div class="col" id="${course.id}" role="region" aria-label="${course.display_name_with_default}">
     <div class="card h-100 fondo_card">
-        <img src="${course.course_image_url}" class="card-img-top" onerror="this.src='/theming/asset/images/no_course_image.png';" alt="${course.display_name_with_default} ${course.display_number_with_default}">
-        <div class="card-body">
-            <h4 class="card-title color_guinda fw-bold">${course.display_name_with_default}</h4>
-            <h6 class="card-title color_guinda">Description</h6>
-            <p class="card-text color_guinda">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <p class="text-center color_guinda">
-                <span><i class="bi bi-person"></i> 895</span>
-            </p>
-            <div class="card-footer text-center">
-                <a href="${reverse('about_course', args=[str(course.id)])}" class="btn btn_join fondo_amarillo text-white">Join now</a>
+        <img src="${course.course_image_url}" class="card-img-top recommended-course-img" alt="${course.display_name_with_default} ${course.display_number_with_default}">
+        <div class="card-body d-flex flex-column">
+            <div class="flex-grow-1">
+                <h4 class="card-title color_guinda fw-bold montserrat">${course.display_name_with_default}</h4>
+                <% 
+                desc = (course.short_description or '').strip()
+                if not desc:
+                    display_desc = 'No hay descripción'
+                else:
+                    display_desc = desc[:300] + ('...' if len(desc) > 300 else '')
+                %>
+                <p class="card-text color_guinda montserrat">${display_desc}</p>
+            </div>
+            <div class="mt-auto">
+                    <div class="text-center mb-3">
+                    <img src="${static.url('images/Emi_semi_globo_1.png')}" alt="EMI Globo" class="img-fluid" style="width: 100%; max-width: none; height: auto;">
+                </div>
+                <div class="text-center">
+                    <a href="${reverse('about_course', args=[str(course.id)])}" class="btn btn_join fondo_amarillo text-white montserrat">Join now</a>
+                </div>
             </div>
         </div>
     </div>

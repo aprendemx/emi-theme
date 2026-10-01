@@ -16,149 +16,75 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
 
-% if uses_bootstrap:
-<div class="wrapper wrapper-footer">
-  <footer id="footer" class="tutor-container"
-    ## When rendering the footer through the branding API,
-    ## the direction may not be set on the parent element,
-    ## so we set it here.
-    % if bidi:
-      dir=${bidi}
-    % endif
-  >
-  <div class="footer-top">
-    <div class="powered-area">
-      ## Please leave this link and use one of the logos provided
-      ## The OpenEdX link may be hidden when this view is served
-      ## through an API to partner sites (such as marketing sites or blogs),
-      ## which are not technically powered by OpenEdX.
-      % if not hide_openedx_link:
-      <ul class="logo-list">
-
-      </ul>
-    </div>
-    {% if INDIGO_FOOTER_NAV_LINKS %}
-    <nav class="nav-colophon" aria-label="${_('About')}">
-      <ol>
-          {% for link in INDIGO_FOOTER_NAV_LINKS %}
-          <li>
-            <a href="{{ link['url'] }}">{{ link['title'] }}</a>
-          </li>
-          {% endfor %}
-      </ol>
-    </nav>
-    {% endif %}
-<div class="powered-area">
-            <img src="https://sisadmin.mexicox.gob.mx/extramexicox/eduaprende.jpg" alt="Runs on Tutor" height="70px"/>
-        </div>
-  </div>
-  <span class="copyright-site">©${datetime.now().year}. Todos los derechos reservados.</span>
-  % endif
-    <div class="colophon">
-
-      % if context.get('include_language_selector', footer_language_selector_is_enabled()):
-          <%include file="${static.get_template_path('widgets/footer-language-selector.html')}"/>
-      % endif
-
-      ## Site operators: Please do not remove this paragraph! This attributes back to edX and makes your acknowledgement of edX's trademarks clear.
-        <p class="copyright">${footer['copyright']}
-            % if icp_license_info.get('icp_license'):
-              ${u" | {text}".format(text=icp_license_info.get('text'))}
-              <a href="${icp_license_info.get('icp_license_link', '#')}">
-                  ${u" {icp}".format(icp=icp_license_info.get('icp_license'))}
-              </a>
-            % endif
-        </p>
-    </div>
-    <div class="references">
-          <!--span>Built on <a href="http://open.edx.org">OpenEdX</a>.</span-->
-          <ol>
-                 <li style="display:inline;">
-            <a href="//www.facebook.com/mexicoXgob/" target="_blank">
-                <img alt="logo fb" src="https://sisadmin.mexicox.gob.mx/redessociales/facebook1.png" height="40px" style=" margin-left:15px;"></a></li>
-        <li style="display:inline;">
-                  <a href="//twitter.com/MexicoX_gob?lang=es" target="_blank">
-                    <img alt="logotipo tw" src="https://sisadmin.mexicox.gob.mx/redessociales/twitter1.png" style="margin-left:6px;" height="40px">
+<footer class="main-footer fondo_guinda text-light">
+      <div class="list-info">
+        <div class="container">
+          <div class="row py-3">
+            <div class="col-sm-3 mt-3">
+              <img data-v-9e928f9a="" src="https://framework-gb.cdn.gob.mx/gobmx/img/logo_blanco.svg" href="/" alt="logo gobierno de méxico" class="logo_footer" style="max-width: 90%;">
+            </div>
+            <div class="col-sm-3 mt-3" style="padding-left: 0px;">
+              <h5 class="text-light montserrat">Enlaces</h5>
+              <ul class="nav flex-column ">
+                <li class="nav-item"><a class="nav-link p-0 text-light montserrat" href="https://participa.gob.mx" target="_blank" rel="noopener" title="Enlace abre en ventana nueva">Participa</a></li>
+                <li class="nav-item"><a class="nav-link p-0 text-light montserrat" href="http://www.ordenjuridico.gob.mx" target="_blank" rel="noopener" title="Enlace abre en ventana nueva">Marco Jurídico</a></li>
+                <li class="nav-item"><a class="nav-link p-0 text-light montserrat" href="https://consultapublicamx.inai.org.mx/vut-web/" target="_blank" rel="noopener" title="Enlace abre en ventana nueva">Plataforma Nacional de Transparencia</a></li>
+                <li class="nav-item"><a class="nav-link p-0 text-light montserrat" href="https://alertadores.funcionpublica.gob.mx/" target="_blank" rel="noopener" title="Enlace abre en ventana nueva">Alerta</a></li>
+                <li class="nav-item"><a class="nav-link p-0 text-light montserrat" href="https://sidec.funcionpublica.gob.mx" target="_blank" rel="noopener" title="Enlace abre en ventana nueva">Denuncia</a></li>
+              </ul>
+            </div>
+            <div class="col-sm-3 mt-3">
+              <h5 class="text-light montserrat">¿Qué es gob.mx?</h5>
+              <p class="montserrat">Es el portal único de trámites, información y participación ciudadana.
+                <a class="nav-link p-0 text-light montserrat" href="https://www.gob.mx/que-es-gobmx">Leer más</a>
+              </p>
+              <ul class="nav flex-column ">
+                <li class="nav-item"><a class="nav-link p-0 text-light montserrat" href="https://datos.gob.mx">Portal de datos abiertos</a></li>
+                <li class="nav-item"><a class="nav-link p-0 text-light montserrat" href="https://www.gob.mx/accesibilidad">Declaración de accesibilidad</a></li>
+                <li class="nav-item"><a class="nav-link p-0 text-light montserrat" href="https://www.gob.mx/terminos">Términos y Condiciones</a></li>
+              </ul>
+            </div>
+            <div class="col-sm-3 mt-3" style="padding-left: 0px;">
+              <h5>
+                <a class="nav-link p-0 text-light montserrat" href="https://www.gob.mx/tramites/ficha/presentacion-de-quejas-y-denuncias-en-la-sfp/SFP54">Denuncia contra servidores públicos</a>
+              </h5>
+              <h5 class="text-light montserrat">Síguenos en</h5>
+              <ul class="list-inline">
+                <li>
+                  <a data-v-6b1f797a="" id="Facebook" href="https://www.facebook.com/gobmexico" target="_blank" rel="noopener" title="enlace a facebook abre en una nueva ventana" class="sendEst share-info footer">
+                    <img alt="Facebook" src="https://framework-gb.cdn.gob.mx/landing/img/facebook.png">
                   </a>
                 </li>
-
-              </ol>
-        </div>
-  </footer>
-</div>
-% else:
-<!-- NEW IN INDIGO update footer -->
-  <div class="wrapper wrapper-footer">
-    <footer id="footer" class="tutor-container"
-      ## When rendering the footer through the branding API,
-      ## the direction may not be set on the parent element,
-      ## so we set it here.
-      % if bidi:
-        dir=${bidi}
-      % endif
-    >
-    <div class="footer-top">
-      <div class="powered-area">
-        ## Please leave this link and use one of the logos provided
-        ## The OpenEdX link may be hidden when this view is served
-        ## through an API to partner sites (such as marketing sites or blogs),
-        ## which are not technically powered by OpenEdX.
-        % if not hide_openedx_link:
-            <ul class="logo-list">
-
-            </ul>
-          </div>
-          {% if INDIGO_FOOTER_NAV_LINKS %}
-          <nav class="nav-colophon" aria-label="${_('About')}">
-            <ol>
-                {% for link in INDIGO_FOOTER_NAV_LINKS %}
-                <li>
-                  <a href="{{ link['url'] }}">{{ link['title'] }}</a>
+                <li style="margin-left: 5px; margin-right: 5px;">
+                  <a data-v-6b1f797a="" id="Twitter" href="https://twitter.com/GobiernoMX" target="_blank" rel="noopener" title="Enlace a twitter abre en una nueva ventana" class="sendEst share-info footer">
+                    <img alt="Twitter" src="https://framework-gb.cdn.gob.mx/landing/img/twitter.png">
+                  </a>
                 </li>
-                {% endfor %}
-            </ol>
-          </nav>
-          {% endif %}
-        <div class="powered-area" style="text-align: center; padding-left: 30px;padding-top: 8px;">
-          <img src="https://sisadmin.mexicox.gob.mx/extramexicox/eduaprende.jpg" alt="Runs on Tutor" height="70px"/>
+                <li style="margin-left: 5px; margin-right: 5px;">
+                  <a data-v-6b1f797a="" id="Instagram" href="https://www.instagram.com/gobmexico/" target="_blank" rel="noopener" title="Enlace a instagram abre en una nueva ventana" class="sendEst share-info footer">
+                    <img alt="Instagram" src="https://framework-gb.cdn.gob.mx/landing/img/instagram.png">
+                  </a>
+                </li>
+                <li style="margin-left: 5px; margin-right: 5px;">
+                  <a data-v-6b1f797a="" id="Youtube" href="https://www.youtube.com/@gobiernodemexico" target="_blank" rel="noopener" title="Enlace a youtube abre en una nueva ventana" class="sendEst share-info footer">
+                    <img alt="Youtube" src="https://framework-gb.cdn.gob.mx/landing/img/youtube.png">
+                  </a>
+                </li>
+                <li>
+                  <div class="logo-079">
+                    <a href="tel:+079" target="_blank">                
+                      <img src=" https://framework-gb.cdn.gob.mx/gobmx/img/079.png" href="/" alt="logo 079" class="logo-079">
+                    </a>              
+                  </div>
+              </li>
+              </ul>
+            </div>
+          </div>
         </div>
-
-        </div>
-        <div style="text-align: center; padding-left: 54px;">
-          <span class="copyright-site">©${datetime.now().year}. Todos los derechos reservados.</span>
-        </div>
-    % endif
-      <div class="colophon">
-
-        % if context.get('include_language_selector', footer_language_selector_is_enabled()):
-            <%include file="${static.get_template_path('widgets/footer-language-selector.html')}"/>
-        % endif
-
-        ## Site operators: Please do not remove this paragraph! This attributes back to edX and makes your acknowledgement of edX's trademarks clear.
-          <p class="copyright">${footer['copyright']}
-              % if icp_license_info.get('icp_license'):
-                ${u" | {text}".format(text=icp_license_info.get('text'))}
-                <a href="${icp_license_info.get('icp_license_link', '#')}">
-                    ${u" {icp}".format(icp=icp_license_info.get('icp_license'))}
-                </a>
-              % endif
-          </p>
       </div>
-<div class="references" style="text-align: center;">
-      <!--span>Built on <a href="http://open.edx.org">OpenEdX</a>.</span-->
-      <ol>
-        	 <li style="display:inline;">
-        <a href="//www.facebook.com/mexicoXgob/" target="_blank">
-            <img alt="logo fb" src="${static.url("images/logoface.png")}" height="40px" style=" margin-left:0.5px; margin-top: 26px"></a></li>
-	<li style="display:inline;">
-              <a href="//twitter.com/MexicoX_gob?lang=es" target="_blank">
-                <img alt="logotipo tw" src="${static.url("images/logox.png")}" style="margin-left:10.5px; margin-top: 26px;" height="40px">
-              </a>
-            </li>
-
-          </ol>
-    </div>
     </footer>
+
+
       <!-- Google tag (gtag.js) -->
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z97Y3FJQ9H"></script>
       <script>
@@ -173,8 +99,6 @@
           gtag('config', 'G-Z97Y3FJQ9H');
       </script>
 
-  </div>
-% endif
 % if include_dependencies:
   <%static:js group='base_vendor'/>
   <%static:css group='style-vendor'/>

@@ -1,0 +1,233 @@
+/* Dropdown personalizado sin Bootstrap */
+.custom-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.courses-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    color: inherit; /* respeta .text-white del header */
+}
+
+.dropdown-arrow {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+.custom-dropdown.active .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.custom-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;         /* alinear al borde derecho del botón */
+    left: auto;       /* evitar que se desborde a la derecha */
+    min-width: 280px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 8px 0;
+}
+
+.custom-dropdown.active .custom-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Forzar contraste legible dentro del menú */
+.custom-dropdown-menu a {
+    color: #333;
+    text-decoration: none;
+}
+
+/* Header interno del overlay (móvil) */
+.dropdown-header {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: #fff;
+    padding: 8px 4px 8px 8px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: flex-end;
+}
+.dropdown-close {
+    border: none;
+    background: transparent;
+    color: #333;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+}
+.dropdown-close:focus { outline: 2px solid #cde3ff; outline-offset: 2px; }
+
+/* Backdrop real para poder cerrar al tocar fuera */
+#dropdown-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0);
+    z-index: 1054; /* debajo del menú (1055) */
+}
+
+.dropdown-loading {
+    padding: 12px 16px;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+}
+
+.dropdown-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    color: #333;
+    text-decoration: none;
+    border-radius: 4px;
+    margin: 0 8px;
+    transition: all 0.2s ease;
+}
+
+.dropdown-link:hover {
+    background-color: #f0f4ff;
+    color: #0066cc;
+    text-decoration: none;
+}
+
+.dropdown-link i {
+    width: 16px;
+    text-align: center;
+}
+
+.dropdown-divider {
+    border: 0;
+    height: 1px;
+    background-color: #eee;
+    margin: 8px 0;
+}
+
+.course-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    color: #333;
+    text-decoration: none;
+    border-radius: 4px;
+    margin: 0 8px;
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+}
+
+.course-item:hover {
+    background-color: #f0f8ff;
+    color: #0066cc;
+    text-decoration: none;
+    border-left-color: #0066cc;
+}
+
+.course-item i {
+    width: 18px;
+    text-align: center;
+    color: #0066cc;
+}
+
+.course-name {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.3;
+}
+
+/* Animación para el loading */
+.dropdown-loading i {
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Asegurar visibilidad del icono del toggler si no se usa navbar-dark */
+.navbar .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,0.85)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+.navbar .navbar-toggler { border-color: rgba(255,255,255,.25); }
+.navbar .navbar-toggler:focus { box-shadow: 0 0 0 .1rem rgba(255,255,255,.25); }
+
+/* Evitar scroll del body cuando overlay está activo */
+body.no-scroll {
+    overflow: hidden !important;
+    touch-action: none;
+}
+
+/* Overlay en responsive: cubrir toda la pantalla cuando está activo */
+@media (max-width: 991.98px) {
+    /* Desactivar pseudo-overlay anterior */
+    .custom-dropdown.active::before { display: none; }
+
+    /* Menú como overlay a pantalla completa cuando está activo */
+    .custom-dropdown.active .custom-dropdown-menu {
+        position: fixed;
+        inset: 0;           /* top:0; right:0; bottom:0; left:0 */
+        width: 100vw;
+        height: 100vh;
+        max-height: none;
+        border-radius: 0;
+        padding: 16px;
+        overflow-y: auto;   /* un solo scroll, el del overlay */
+        background: #fff;
+        z-index: 1055;      /* por encima del backdrop */
+        border: 0;
+        box-shadow: none;
+    }
+
+    /* Reducir separación de los items en la navbar */
+    .navbar .navbar-nav { gap: 8px; align-items: center; }
+    .navbar .custom-dropdown { width: auto; margin-right: 4px; }
+    .navbar .courses-button { width: auto; padding: 8px 12px; }
+}
+
+/* Responsive (fallback) */
+@media (max-width: 768px) {
+    .custom-dropdown { width: auto; }
+}
+
+/* Evitar que el menú quede detrás de otros elementos del header */
+.global-header, .navbar, .custom-dropdown-menu { z-index: 1030; }
+
+/* Scroll personalizado */
+.custom-dropdown-menu::-webkit-scrollbar {
+    width: 6px;
+}
+
+.custom-dropdown-menu::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.custom-dropdown-menu::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}

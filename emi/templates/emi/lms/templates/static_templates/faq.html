@@ -1,0 +1,795 @@
+<%namespace name='static' file='../static_content.html'/>
+<%page expression_filter="h"/>
+<%! from django.utils.translation import gettext as _ %>
+<%inherit file="../main.html" />
+
+<%block name="headextra">
+    <link rel="stylesheet" type="text/css" href="${static.url('css/faq.css')}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</%block>
+
+<%block name="pagetitle">faq </%block>
+
+<main id="main" aria-label="Content" tabindex="-1">
+  <!-- Barra de progreso de lectura -->
+  <div class="faq-progress-bar"></div>
+
+  <!-- Navegación flotante -->
+  <nav class="faq-navigation">
+    <h4>Ir a sección</h4>
+    <a href="#estudiantes" class="faq-nav-link">Estudiantes</a>
+    <a href="#cursos" class="faq-nav-link">Cursos</a>
+    <a href="#constancias" class="faq-nav-link">Constancias</a>
+    <a href="#cuentas" class="faq-nav-link">Cuentas</a>
+  </nav>
+
+  <section class="about">
+    <div class="encabezado">
+      <h1>
+        <%block name="pageheader">
+          Preguntas Frecuentes (FAQ)
+        </%block>
+      </h1>
+    </div>
+
+    <!-- Buscador de FAQ -->
+    <div class="faq-search-container">
+      <div class="faq-search-box">
+        <input type="text" id="faq-search" class="faq-search-input" placeholder="Buscar en preguntas frecuentes..." autocomplete="off">
+        <i class="fas fa-search faq-search-icon"></i>
+      </div>
+      <div class="faq-search-results"></div>
+      <div class="faq-question-counter">28 preguntas</div>
+    </div>
+
+    <article class="faq-content">
+
+      <!-- Sección: Estudiantes -->
+      <div class="faq-section" id="estudiantes">
+        <div class="faq-section-header">
+          <h2>Estudiantes</h2>
+          <span class="faq-section-toggle">▼</span>
+        </div>
+        <div class="faq-section-content">
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>¿Quién puede tomar un curso en la plataforma?</h3>
+            </div>
+            <div class="faq-answer">
+              <p>
+                La mayoría de los cursos están abiertos a público en general. Solo necesitas tener acceso a una computadora con un navegador actualizado, como Firefox o Chrome, una conexión a Internet; elegir un curso de tu interés y ¡muchas ganas de aprender!, registrarte para crear una cuenta y realizar el curso que hayas seleccionado.
+              </p>
+              <p>Toda la oferta educativa es completamente gratuita y abierta las 24 horas, los siete días de la semana.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>¿Cuesta dinero tomar un curso?</h3>
+            </div>
+            <div class="faq-answer">
+              <p>No, los cursos son totalmente gratuitos.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>¿Los cursos de la plataforma son en español?</h3>
+            </div>
+            <div class="faq-answer">
+              <p>Sí.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>¿Tienen transcripción los cursos?</h3>
+            </div>
+            <div class="faq-answer">
+              <p>Principalmente los materiales audiovisuales de todos los cursos alojados en la plataforma tienen las transcripciones activas.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>¿Cuáles son las recomendaciones mínimas del equipo de cómputo para tomar un curso?</h3>
+            </div>
+            <div class="faq-answer">
+              <p>
+                Es importante utilizar las versiones más actualizadas de los navegadores Firefox o Google Chrome, para optimizar el desempeño de la plataforma.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>¿Qué puedo hacer si los videos alojados en la plataforma de YouTube están restringidos en mi institución o lugar de trabajo?</h3>
+            </div>
+            <div class="faq-answer">
+              <p>
+                En este caso, revisa con el área de informática correspondiente, que te configuren los accesos necesarios durante el periodo de duración del curso que estés realizando.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>¿Puedo acceder a los cursos con mi dispositivo móvil o tableta?</h3>
+            </div>
+            <div class="faq-answer">
+              <p>
+                Los cursos están disponibles para visualizarse desde tu teléfono inteligente o tableta; sin embargo, se recomienda utilizar un equipo de cómputo de escritorio o laptop para disfrutar de los cursos de manera óptima.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Sección: Referente a los cursos -->
+      <div class="faq-section" id="cursos">
+        <div class="faq-section-header">
+          <h2>Referente a los cursos</h2>
+          <span class="faq-section-toggle">▼</span>
+        </div>
+        <div class="faq-section-content">
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>¿Cómo inicio sesión para tomar un curso?</h3>
+            </div>
+            <div class="faq-answer">
+              <p>Una vez que te registres en la plataforma y actives tu cuenta, sigue estos pasos:</p>
+              <ol>
+                <li>Haz clic en el botón «Iniciar sesión» en la página principal de la plataforma.</li>
+                <li>Escribe la dirección de correo electrónico y la contraseña con las que te registraste.</li>
+                <li>
+                  Esto te llevará al panel de control, donde tendrás acceso a tus cursos activos, o bien, da clic en «Encuentra nuevo», donde encontrarás otros disponibles.
+                </li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>¿Cuándo inicia o termina mi curso?</h3>
+            </div>
+            <div class="faq-answer">
+              <p>
+                Podrás encontrar la fecha de inicio y la duración para cada curso en la página de descripción de este. Si estás registrado en uno, también verás su fecha de inicio en el tablero.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>¿Cuánta carga de trabajo tendré para aprobar un curso?</h3>
+            </div>
+            <div class="faq-answer">
+              <p>Las horas previstas de estudio para cada curso se incluyen en la página de descripción de este.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>¿Qué requisitos necesito antes de que empiece el curso que quiero realizar?</h3>
+            </div>
+            <div class="faq-answer">
+              <p>
+                Cada curso es diferente: algunos tienen requisitos previos y otros no. Consulta la página de descripción del curso, para conocer las recomendaciones específicas sobre estos.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>¿Puedo descargar el material de lectura de mi curso?</h3>
+            </div>
+            <div class="faq-answer">
+              <p>
+                Todo el contenido está disponible en la plataforma; descargarlo atenta contra las leyes de derecho de autor. Si necesitas o deseas una copia impresa de algún documento, te recomendamos que lo compres.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>¿Puedo tomar más de un curso a la vez?</h3>
+            </div>
+            <div class="faq-answer">
+              <p>¡Claro! Puedes inscribirte en los cursos que desees realizar.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>¿Dónde veo el horario del curso?</h3>
+            </div>
+            <div class="faq-answer">
+              <p>
+                Todos los cursos están disponibles las 24 horas, incluyendo los videos y las lecturas. Basta con que te inscribas y accedas al contenido. Sin embargo, revisa bien las fechas de exámenes y de entrega de trabajos, para cumplir a tiempo.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>Si me pierdo una semana del curso, ¿cómo afectará a mi rendimiento?</h3>
+            </div>
+            <div class="faq-answer">
+              <p>
+                Es posible completar un curso si te pierdes una semana; sin embargo, son progresivos, por lo que debes revisar y estudiar lo que te hayas perdido. Además, no podrás presentar los trabajos y exámenes después de las fechas de vencimiento. Revisa el programa del curso para conocer las fechas y horarios importantes.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>Se me pasó una fecha límite, ¿podré tener una extensión de tiempo?</h3>
+            </div>
+            <div class="faq-answer">
+              <p>No es posible. Consulta previamente el cierre del curso para que lo concluyas satisfactoriamente.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>¿Qué pasa si tengo una pregunta sobre el contenido de un curso y su forma de calificarlo?</h3>
+            </div>
+            <div class="faq-answer">
+              <p>
+                Todas las dudas relacionadas a los cursos o a su evaluación pueden ser respondidas por el personal académico que asesore el servicio educativo. La distribución de calificaciones debe estar en la información principal del mismo. En caso necesario, puedes escribir tu duda al centro de soporte y se canalizará al personal académico del curso para su atención.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>¿Cómo puedo hablar con profesores, ayudantes de cátedra y personal relacionado con la impartición de los cursos?</h3>
+            </div>
+            <div class="faq-answer">
+              <p>
+                Simplemente envía tus preguntas al correo electrónico del personal académico del curso y cada institución hará su mejor esfuerzo para responderte lo antes posible.
+              </p>
+              <p>
+                Te recordamos que algunos cursos cuentan con una sección de información general que explica los detalles de la impartición del mismo.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>¿Puedo encontrar y conocer a otros estudiantes?</h3>
+            </div>
+            <div class="faq-answer">
+              <p>
+                Algunos cursos tienen foros de discusión, donde puedes comunicarte y realizar trabajo colaborativo con otros estudiantes en el contexto del curso.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>¿Cómo puedo obtener ayuda y soporte correspondiente a mi curso?</h3>
+            </div>
+            <div class="faq-answer">
+              <p>
+                Revisa a detalle el contenido del curso, participa en todas las actividades y colabora con tu experiencia y conocimiento sobre el tema. En caso de que haya algún foro de discusión activo, menciona tus preguntas y comparte posibles comentarios que apoyen a algunas dudas que tengan tus compañeros.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>¿Puedo volver a tomar un curso?</h3>
+            </div>
+            <div class="faq-answer">
+              <p>¡Claro que sí! Revisa periódicamente la página para conocer su programación y saber las fechas en las que iniciará otra emisión del curso que deseas realizar.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>¿Se volverán a ofrecer los mismos cursos en el futuro?</h3>
+            </div>
+            <div class="faq-answer">
+              <p>
+                Cada institución decide la programación de su oferta educativa, así como su periodicidad a lo largo del año en curso.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>Un curso en el que estoy interesado ya comenzó. ¿Puedo inscribirme?</h3>
+            </div>
+            <div class="faq-answer">
+              <p>
+                Si está disponible la inscripción del curso, puedes realizar este proceso y entrar al contenido directamente o esperar a la fecha de inicio de su impartición.
+              </p>
+              <p>
+                Es importante mencionar que en algunos cursos hay fechas establecidas para realizar las actividades y tareas, revisa estos datos para asegurarte que no estén vencidas en la fecha que ingreses. Lo ideal es que te inscribas al curso cerca de su fecha de inicio.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>¿Qué pasa si tengo que darme de baja de un curso? ¿Puedo tomarlo en el futuro?</h3>
+            </div>
+            <div class="faq-answer">
+              <p>
+                No puedes darte de baja después de inscribirte a un curso; sin embargo, en caso de que la institución vuelva a ofertarlo, puedes realizarlo nuevamente.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>¿Qué es un curso archivado?</h3>
+            </div>
+            <div class="faq-answer">
+              <p>
+                Los cursos estarán disponibles como archivados. En estos casos, solo puedes acceder a ellos para visualizar el contenido general; sin embargo, algunos recursos o herramientas de comunicación no estarán disponibles.
+              </p>
+              <p>En este tipo de cursos no se otorgan constancias de participación.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Sección: Constancias -->
+      <div class="faq-section" id="constancias">
+        <div class="faq-section-header">
+          <h2>Constancias</h2>
+          <span class="faq-section-toggle">▼</span>
+        </div>
+        <div class="faq-section-content">
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>¿Qué tipo de constancias ofrece la plataforma?</h3>
+            </div>
+            <div class="faq-answer">
+              <p>
+                Las personas que acrediten satisfactoriamente un curso podrán obtener una constancia gratuita de participación. Consulta la información al respecto dentro del curso para conocer en qué momento estará disponible.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>¿Puedo pedir una copia impresa de mi constancia?</h3>
+            </div>
+            <div class="faq-answer">
+              <p>
+                La plataforma no envía copias impresas a sus usuarios. Sin embargo, puedes imprimir dicho documento en formato PDF desde tu computadora.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>¿Los cursos realizados en la plataforma pueden contarse como créditos universitarios?</h3>
+            </div>
+            <div class="faq-answer">
+              <p>
+                No, los cursos que realices son independientes a los programas de estudios de las instituciones que participan en esta plataforma digital. Te recomendamos consultar directamente con el personal académico de tu institución, si es posible tomar en cuenta tu trabajo realizado en el curso o la constancia de término correspondiente como crédito extra a la materia o clase.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>¿Cómo se determina la expedición de una constancia?</h3>
+            </div>
+            <div class="faq-answer">
+              <p>
+                Un estudiante que recibe una calificación aprobatoria en un curso obtendrá una constancia de participación emitida por la plataforma y la institución que ofreció el curso.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>¿Cómo se entregan las constancias?</h3>
+            </div>
+            <div class="faq-answer">
+              <p>
+                Las constancias se emiten a través de la plataforma. Una vez que hayas finalizado y aprobado el curso, podrás descargarla desde la pestaña correspondiente.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>¿Cuándo recibiré mi constancia?</h3>
+            </div>
+            <div class="faq-answer">
+              <p>
+                En algunas ocasiones, la constancia podrá descargarse inmediatamente al concluir y aprobar un curso. En otros casos, estará disponible después del cierre del mismo. Este proceso depende de la institución que imparte el servicio educativo y generalmente dentro del contenido, se especifica el proceso para obtener la constancia.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>¿Por qué no recibí mi constancia de participación?</h3>
+            </div>
+            <div class="faq-answer">
+              <p>
+                Si has obtenido una calificación aprobatoria y ya verificaste que la constancia no está activa en tu panel de control o en la pestaña de progreso dentro del curso, te sugerimos enviar un ticket al Centro de Soporte, para recibir apoyo.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>¿Cuánto tiempo tengo para descargar mi constancia?</h3>
+            </div>
+            <div class="faq-answer">
+              <p>
+                Como se especifica en el Código de Honor, las constancias estarán disponibles en la plataforma para su descarga por tres meses a partir de la fecha de conclusión del curso. Es importante precisar que no se emitirán constancias extemporáneas.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>Perdí mi constancia. ¿Podrían enviarla de nuevo?</h3>
+            </div>
+            <div class="faq-answer">
+              <p>
+                No se reenvían las constancias de los cursos que acreditaste, pero sí puedes descargarlas nuevamente. Inicia sesión en tu cuenta y revisa en el tablero del curso. Podrás descargar y visualizar la constancia hasta antes de que pasen los tres meses en los que estará disponible para este proceso.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Sección: Sobre las cuentas -->
+      <div class="faq-section" id="cuentas">
+        <div class="faq-section-header">
+          <h2>Sobre las cuentas</h2>
+          <span class="faq-section-toggle">▼</span>
+        </div>
+        <div class="faq-section-content">
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>¿Qué pasa si mi nombre de usuario ya fue utilizado?</h3>
+            </div>
+            <div class="faq-answer">
+              <p>Por favor, regístrate con otro nombre de usuario.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>¿Es necesario registrar un correo y mi nombre real?</h3>
+            </div>
+            <div class="faq-answer">
+              <p>
+                El correo es necesario para inscribirse al curso e indispensable en caso de que se necesite restablecer la contraseña.
+              </p>
+              <p>
+                Sobre el nombre, recuerda que las constancias de participación se emitirán con los datos que tú hayas registrado.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>¿Qué pasa si tengo problemas para acceder a mi cuenta y en la plataforma no se reconoce mi contraseña o correo electrónico?</h3>
+            </div>
+            <div class="faq-answer">
+              <p>
+                Por favor, asegúrate de tener una versión actualizada de Firefox, Chrome o Internet Explorer, con cookies y JavaScript habilitados. Asimismo, vacía el caché de tu computadora. Si persiste el problema, levanta un ticket en el Centro de Soporte de la plataforma.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>¿Qué pasa si olvidé mi contraseña?</h3>
+            </div>
+            <div class="faq-answer">
+              <p>
+                Da clic en «Olvidé mi contraseña», posteriormente recibirás un mensaje a tu correo electrónico para modificarla.
+              </p>
+              <p>
+                También encontrarás el vínculo «Restablecer contraseña» en la sección de «Configuración de cuenta». Haz clic en este enlace y se enviará un mensaje, con las respectivas indicaciones, directo al correo electrónico que proporcionaste.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>¿Qué pasa si no recibí un correo electrónico de activación o para restablecimiento de contraseña?</h3>
+            </div>
+            <div class="faq-answer">
+              <p>Si no recibiste un correo electrónico automatizado puede ser por estas razones:</p>
+              <ul>
+                <li>
+                  Escribiste con algún error tu dirección de correo electrónico.
+                </li>
+                <li>
+                  El correo para activar tu cuenta se recibió directamente en tu bandeja de spam o de correo no deseado. Revisa y recupera el mensaje para realizar el proceso correspondiente
+                </li>
+                <li>
+                  Estás utilizando un navegador antiguo. Te recomendamos que descargues la versión actual de Firefox o Chrome.
+                </li>
+                <li>
+                  Verifica si JavaScript está deshabilitado en tu navegador. Por favor, comprueba la configuración del navegador y confirma que JavaScript esté activado.
+                </li>
+                <li>
+                  No se registró con éxito la cuenta. Por favor, regístrate de nuevo con la misma dirección de correo electrónico. Si ya existe una cuenta con este dato, visualizarás un error con respecto a una dirección de correo electrónico duplicada. Comunícate al Centro de Soporte para recibir apoyo.
+                </li>
+              </ul>
+              <p>
+                No hay necesidad de hacer alguna acción específica para recuperar la cuenta que no se activó. Si no se activa a través del enlace en el correo electrónico, está desaparecerá después.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>¿Puedo borrar mi cuenta?</h3>
+            </div>
+            <div class="faq-answer">
+              <p>
+                Una cuenta que no esté activa o no haya entrado al contenido de algún curso durante un periodo determinado será dada de baja automáticamente.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>¿Mi información personal está segura y resguardada?</h3>
+            </div>
+            <div class="faq-answer">
+              <p>
+                Sí, se han tomado medidas para garantizar que tu información no esté disponible públicamente. Sin embargo, puede ser consultada por el personal técnico pedagógico de la plataforma y los responsables de la institución que imparte el curso, esto como parte del seguimiento académico o la emisión de constancias. Si tienes alguna duda, consulta el aviso de privacidad.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>¿Qué sucede si tengo problemas con la visualización del tablero (herramientas faltantes en el curso o en caso de no visualizar un video)?</h3>
+            </div>
+            <div class="faq-answer">
+              <p>
+                Por favor, verifica tu navegador y configuración, también JavaScript debe estar habilitado. Te recomendamos descargar y utilizar la versión actual de Firefox o Chrome.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h3>¿Qué pasa si tengo otra consulta o alguna duda diferente a las que se respondieron aquí?</h3>
+            </div>
+            <div class="faq-answer">
+              <p>
+                Por favor, ponte en contacto a través del Centro de Soporte de la plataforma.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    </article>
+  </section>
+</main>
+
+<!-- FAQ JavaScript -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Search functionality
+  const searchInput = document.getElementById('faq-search');
+  const searchResults = document.querySelector('.faq-search-results');
+  const searchIcon = document.querySelector('.faq-search-icon');
+  let searchTimeout;
+
+  // Progress bar
+  const progressBar = document.querySelector('.faq-progress-bar');
+  
+  // Navigation and section toggles
+  const navLinks = document.querySelectorAll('.faq-nav-link');
+  const sectionToggles = document.querySelectorAll('.faq-section-toggle');
+  const sections = document.querySelectorAll('.faq-section');
+  
+  // Individual question toggles
+  const questionElements = document.querySelectorAll('.faq-question');
+  
+  // Search functionality
+  if (searchInput) {
+    searchInput.addEventListener('input', function() {
+      clearTimeout(searchTimeout);
+      const query = this.value.toLowerCase().trim();
+      
+      searchTimeout = setTimeout(() => {
+        if (query.length > 0) {
+          searchFAQ(query);
+          searchResults.style.display = 'block';
+          searchIcon.style.color = '#8B1F41';
+        } else {
+          searchResults.style.display = 'none';
+          searchIcon.style.color = '#666';
+          showAllItems();
+        }
+      }, 300);
+    });
+  }
+
+  function searchFAQ(query) {
+    const allItems = document.querySelectorAll('.faq-item');
+    const results = [];
+    
+    allItems.forEach(item => {
+      const question = item.querySelector('.faq-question h3').textContent.toLowerCase();
+      const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+      
+      if (question.includes(query) || answer.includes(query)) {
+        results.push({
+          element: item,
+          question: item.querySelector('.faq-question h3').textContent,
+          section: item.closest('.faq-section').id
+        });
+      }
+    });
+    
+    displaySearchResults(results, query);
+  }
+
+  function displaySearchResults(results, query) {
+    const allItems = document.querySelectorAll('.faq-item');
+    const allSections = document.querySelectorAll('.faq-section');
+    
+    if (results.length === 0) {
+      searchResults.innerHTML = '<p>No se encontraron resultados para "' + query + '"</p>';
+      allItems.forEach(item => item.style.display = 'none');
+      return;
+    }
+    
+    // Hide all items first
+    allItems.forEach(item => item.style.display = 'none');
+    
+    // Show matching items and their sections
+    const activeSections = new Set();
+    results.forEach(result => {
+      result.element.style.display = 'block';
+      activeSections.add(result.section);
+    });
+    
+    // Show relevant sections
+    allSections.forEach(section => {
+      const sectionContent = section.querySelector('.faq-section-content');
+      if (activeSections.has(section.id)) {
+        sectionContent.style.display = 'block';
+        section.querySelector('.faq-section-toggle').textContent = '▲';
+      } else {
+        sectionContent.style.display = 'none';
+        section.querySelector('.faq-section-toggle').textContent = '▼';
+      }
+    });
+    
+    var plural = results.length !== 1 ? 's' : '';
+    searchResults.innerHTML = '<p>Encontradas ' + results.length + ' pregunta' + plural + ' para "' + query + '"</p>';
+  }
+
+  function showAllItems() {
+    const allItems = document.querySelectorAll('.faq-item');
+    const allSections = document.querySelectorAll('.faq-section-content');
+    
+    allItems.forEach(item => {
+      item.style.display = 'block';
+      item.classList.remove('active'); // Close individual answers
+    });
+    allSections.forEach(content => content.style.display = 'block');
+    
+    // Reset section toggles
+    document.querySelectorAll('.faq-section-toggle').forEach(toggle => {
+      toggle.textContent = '▼';
+    });
+  }
+
+  // Section toggle functionality
+  sectionToggles.forEach(toggle => {
+    toggle.addEventListener('click', function() {
+      const section = this.closest('.faq-section');
+      const content = section.querySelector('.faq-section-content');
+      const isHidden = content.style.display === 'none';
+      
+      if (isHidden) {
+        content.style.display = 'block';
+        this.textContent = '▲';
+      } else {
+        content.style.display = 'none';
+        this.textContent = '▼';
+        
+        // Close all individual questions in this section
+        section.querySelectorAll('.faq-item').forEach(item => {
+          item.classList.remove('active');
+        });
+      }
+    });
+  });
+
+  // Individual question toggle functionality
+  questionElements.forEach(question => {
+    question.addEventListener('click', function() {
+      const faqItem = this.closest('.faq-item');
+      const isActive = faqItem.classList.contains('active');
+      
+      // Toggle the clicked item
+      if (isActive) {
+        faqItem.classList.remove('active');
+      } else {
+        faqItem.classList.add('active');
+      }
+    });
+  });
+
+  // Navigation functionality
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href').substring(1);
+      const targetSection = document.getElementById(targetId);
+      
+      if (targetSection) {
+        // Show the target section if hidden
+        const content = targetSection.querySelector('.faq-section-content');
+        const toggle = targetSection.querySelector('.faq-section-toggle');
+        
+        content.style.display = 'block';
+        toggle.textContent = '▲';
+        
+        // Scroll to section
+        targetSection.scrollIntoView({ behavior: 'smooth' });
+        
+        // Update navigation active state
+        navLinks.forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+      }
+    });
+  });
+
+  // Progress bar on scroll
+  window.addEventListener('scroll', function() {
+    const scrollTop = window.pageYOffset;
+    const docHeight = document.body.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    
+    if (progressBar) {
+      progressBar.style.width = Math.min(scrollPercent, 100) + '%';
+    }
+  });
+
+  // Update question counter
+  function updateQuestionCounter() {
+    const visibleItems = document.querySelectorAll('.faq-item[style*="display: block"], .faq-item:not([style*="display: none"])');
+    const counter = document.querySelector('.faq-question-counter');
+    if (counter) {
+      counter.textContent = visibleItems.length + ' preguntas';
+    }
+  }
+
+  // Initial counter update
+  updateQuestionCounter();
+  
+  // Update counter when search changes
+  const observer = new MutationObserver(updateQuestionCounter);
+  document.querySelectorAll('.faq-item').forEach(item => {
+    observer.observe(item, { attributes: true, attributeFilter: ['style'] });
+  });
+});
+</script>
+

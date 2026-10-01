@@ -1,11 +1,8 @@
-// Include custom dashborad
+// Include custom dashboradsss
 .window-wrap #content.content-wrapper {
     padding: 0 !important;
     margin: 0 !important;
     max-width: 100%;
-    @include media-breakpoint-up(lg) {
-        margin-top: 64px !important;
-    }
 }
 .sidebar-notification.add {
     background: #FFFBEB;
@@ -344,19 +341,20 @@
     }
 }
 .listing-courses {
-    letter-spacing: -.32em;
-    margin: 0 -2.5% !important;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 !important;
+    padding: 0;
+    list-style: none;
     li {
-        letter-spacing: normal;
-        display: inline-block !important;
-        vertical-align: top;
-        width: 95% !important;
-        margin: 0 2.5% 25px !important;
+        display: block !important;
+        width: 100% !important;
+        margin: 0 0 25px !important;
         @include media-breakpoint-up(sm) {
-            width: 45% !important;
+            width: 50% !important;
         }
         @include media-breakpoint-up(md) {
-            width: 28.33% !important;
+            width: 25% !important;
         }
     }
 }
