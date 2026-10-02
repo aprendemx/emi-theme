@@ -98,3 +98,9 @@ footer.tutor-container {
         color: $light-dark;
     }
 }
+
+// lms-course.css (core) aplica .container > div { display: table } en las páginas
+// de curso, y le gana a .row { display: flex } de Bootstrap 5: el pie se apilaba.
+footer.main-footer .container > .row {
+  display: flex;
+}
